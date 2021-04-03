@@ -1,79 +1,96 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import PropTypes from "prop-types";
+import fetchProjects from "./api/fetchProjects";
+import fetchUser from "./api/fetchUser";
 
-export default function Home() {
+export default function Home({ user, projects }) {
+  console.log(
+    "🚀 ~ file: index.js ~ line 6 ~ Home ~ projects",
+    projects
+  );
+  console.log("🚀 ~ file: index.js ~ line 6 ~ Home ~ user", user);
+
   return (
-    <div className={styles.container}>
+    <div className="">
       <Head>
-        <title>Create Next App</title>
+        <title>Daniel Robertson</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <main className="text-center">
+        <h1 className="mt-10 text-xl">{user.name}</h1>
 
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>
-              Find in-depth information about Next.js features and
-              API.
-            </p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>
-              Learn about Next.js in an interactive course with
-              quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>
-              Discover and deploy boilerplate example Next.js
-              projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with
-              Vercel.
-            </p>
-          </a>
+        <div className="">{user.shortBio}</div>
+        <div className="mt-20">
+          <h2 className="text-xl">Projects</h2>
+          <ul>
+            {projects.map((p) => (
+              <li key={p.name}>{p.name}</li>
+            ))}
+          </ul>
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img
-            src="/vercel.svg"
-            alt="Vercel Logo"
-            className={styles.logo}
-          />
-        </a>
+      <footer className="fixed bottom-5 text-center w-full">
+        Made in Austin 🌍
       </footer>
     </div>
   );
 }
+
+export async function getStaticProps() {
+  const [userResponse, projectsResponse] = await Promise.all([
+    fetchUser(process.env.USER_ID),
+    fetchProjects()
+  ]);
+
+  const projects = projectsResponse.items.map((p) => p.fields);
+  console.log(
+    "🚀 ~ file: index.js ~ line 51 ~ getStaticProps ~ projects",
+    projects
+  );
+  console.log(
+    "🚀 ~ file: index.js ~ line 49 ~ getStaticProps ~ userResponse",
+    userResponse
+  );
+
+  return {
+    props: {
+      user: userResponse.fields,
+      projects
+    }
+  };
+}
+
+const { shape, string } = PropTypes;
+Home.propTypes = {
+  user: shape({
+    name: string,
+    shortBio: string,
+    email: string,
+    twitter: string,
+    github: string,
+    image: shape({
+      fields: shape({
+        file: shape({
+          title: string,
+          url: string
+        })
+      })
+    })
+  }).isRequired,
+  projects: shape({
+    name: string,
+    description: string,
+    images: shape([
+      shape({
+        fields: shape({
+          file: shape({
+            title: string,
+            url: string
+          })
+        })
+      })
+    ])
+  }).isRequired
+};
