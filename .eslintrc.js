@@ -14,12 +14,11 @@ module.exports = {
   plugins: ["react", "prettier"],
   rules: {
     "prettier/prettier": ["error"],
-    quotes: [2, "double", { avoidEscape: true }],
-    "comma-dangle": ["error", "never"],
     "react/jsx-filename-extension": [
       1,
       { extensions: [".js", ".jsx"] }
     ],
-    "react/jsx-props-no-spreading": [0]
+    "react/jsx-props-no-spreading": [0],
+    "react/react-in-jsx-scope": [0]
   }
 };
