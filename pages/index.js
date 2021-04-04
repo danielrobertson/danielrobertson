@@ -5,6 +5,25 @@ import fetchProjects from "./api/fetchProjects";
 import fetchUser from "./api/fetchUser";
 import Icon from "../components/Icon";
 
+const navigationLinks = Object.freeze([
+  {
+    label: "About",
+    path: "#about"
+  },
+  {
+    label: "Projects",
+    path: "#projects"
+  },
+  {
+    label: "Resume",
+    path: "#resume"
+  },
+  {
+    label: "Contact",
+    path: "#contact"
+  }
+]);
+
 const socialLinks = Object.freeze([
   "twitter",
   "linkedin",
@@ -13,38 +32,37 @@ const socialLinks = Object.freeze([
   "soundcloud",
   "email"
 ]);
-export default function Home({ user, projects }) {
-  const {
-    email,
-    github,
-    image,
-    name,
-    shortBio,
-    title,
-    twitter
-  } = user;
 
-  console.log(
-    "🚀 ~ file: index.js ~ line 6 ~ Home ~ projects",
-    projects
-  );
-  console.log("🚀 ~ file: index.js ~ line 6 ~ Home ~ user", user);
+export default function Home({ user, projects }) {
+  const { image, name, shortBio, title } = user;
 
   return (
-    <div className="">
+    <div>
       <Head>
         <title>Daniel Robertson</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="">
-        <header className="flex flex-col items-center bg-green text-gray-lightest pb-24">
+      <main>
+        <header className="flex flex-col items-center bg-green text-gray-lightest pb-14">
           <img
             src={image.fields.file.url}
             className="rounded-full mt-16 h-52 w-52 text-xl"
             alt="headshot"
           />
           <div className="text-xl mt-4">{user.title}</div>
+
+          <nav className="mt-8 text-5xl font-thin">
+            <ol className="flex">
+              {navigationLinks.map((link) => (
+                <li className="mx-6">
+                  <Link href={link.path}>
+                    <a href={link.path}>{link.label}</a>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </nav>
 
           <div className="mt-10 flex">
             {socialLinks.map((social) => (
@@ -56,9 +74,11 @@ export default function Home({ user, projects }) {
             ))}
           </div>
         </header>
-        <div className="mt-20 text-center">
-          <h2 className="text-2xl font-semibold"> Projects</h2>
-          <ul className="text-xl list-none">
+        <div className="mt-20 text-center text-gray-dark">
+          <h2 className="text-6xl">About</h2>
+          <div className="px-16 mt-10">{user.shortBio}</div>
+          <h2 className="text-6xl mt-16">Projects</h2>
+          <ul className="mt-10 text-xl list-none">
             {projects.map((p) => (
               <li key={p.name}>{p.name}</li>
             ))}
