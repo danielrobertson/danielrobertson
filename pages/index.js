@@ -1,9 +1,29 @@
 import Head from "next/head";
+import Link from "next/link";
 import PropTypes from "prop-types";
 import fetchProjects from "./api/fetchProjects";
 import fetchUser from "./api/fetchUser";
+import Icon from "../components/Icon";
 
+const socialLinks = Object.freeze([
+  "twitter",
+  "linkedin",
+  "instagram",
+  "github",
+  "soundcloud",
+  "email"
+]);
 export default function Home({ user, projects }) {
+  const {
+    email,
+    github,
+    image,
+    name,
+    shortBio,
+    title,
+    twitter
+  } = user;
+
   console.log(
     "🚀 ~ file: index.js ~ line 6 ~ Home ~ projects",
     projects
@@ -17,13 +37,28 @@ export default function Home({ user, projects }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="text-center">
-        <h1 className="mt-10 text-xl">{user.name}</h1>
+      <main className="">
+        <header className="flex flex-col items-center bg-green text-gray-lightest pb-24">
+          <img
+            src={image.fields.file.url}
+            className="rounded-full mt-16 h-52 w-52 text-xl"
+            alt="headshot"
+          />
+          <div className="text-xl mt-4">{user.title}</div>
 
-        <div className="">{user.shortBio}</div>
-        <div className="mt-20">
-          <h2 className="text-xl">Projects</h2>
-          <ul>
+          <div className="mt-10 flex">
+            {socialLinks.map((social) => (
+              <Link href={user[social]}>
+                <a href={user[social]}>
+                  <Icon name={social} className="mx-4" />
+                </a>
+              </Link>
+            ))}
+          </div>
+        </header>
+        <div className="mt-20 text-center">
+          <h2 className="text-2xl font-semibold"> Projects</h2>
+          <ul className="text-xl list-none">
             {projects.map((p) => (
               <li key={p.name}>{p.name}</li>
             ))}
