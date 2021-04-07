@@ -76,7 +76,7 @@ export default function Home({ user, projects }) {
 
             <div className="mt-10 flex">
               {socialLinks.map((social) => (
-                <Link href={user[social]}>
+                <Link key={social} href={user[social]}>
                   <a href={user[social]}>
                     <Icon name={social} className="mx-4" />
                   </a>
@@ -150,7 +150,7 @@ export async function getStaticProps() {
   };
 }
 
-const { shape, string } = PropTypes;
+const { array, shape, string } = PropTypes;
 Home.propTypes = {
   user: shape({
     name: string,
@@ -167,18 +167,5 @@ Home.propTypes = {
       })
     })
   }).isRequired,
-  projects: shape({
-    name: string,
-    description: string,
-    images: shape([
-      shape({
-        fields: shape({
-          file: shape({
-            title: string,
-            url: string
-          })
-        })
-      })
-    ])
-  }).isRequired
+  projects: array.isRequired
 };
