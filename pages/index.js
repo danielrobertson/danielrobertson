@@ -81,7 +81,10 @@ export default function Home({ user, projects }) {
               <nav className="mt-8 text-5xl font-thin">
                 <ol className="flex">
                   {navigationLinks.map((link) => (
-                    <li key={link.label} className="mx-6">
+                    <li
+                      key={link.label}
+                      className="mx-6 hover:text-gray-600"
+                    >
                       <Link href={link.path}>
                         <a href={link.path}>{link.label}</a>
                       </Link>
