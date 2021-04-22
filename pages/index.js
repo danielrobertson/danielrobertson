@@ -36,7 +36,15 @@ const socialLinks = Object.freeze([
 const NUMBER_OF_PREVIEW_PROJECTS = 3;
 
 export default function Home({ user, projects }) {
-  const { image, name, shortBio, title, github } = user;
+  const {
+    github,
+    image,
+    linkedin,
+    name,
+    shortBio,
+    title,
+    twitter
+  } = user;
 
   const projectsToPreview = projects.slice(
     0,
@@ -127,7 +135,17 @@ export default function Home({ user, projects }) {
             <a id="contact" href="#contact">
               <h2 className="text-6xl">Contact</h2>
             </a>
-            snapchats still cool amirite 😜 🤙🏼 🥵
+            <div className="mt-10">
+              Let&apos;s connect on{" "}
+              <a className="underline" href={twitter}>
+                Twitter
+              </a>{" "}
+              or{" "}
+              <a className="underline" href={linkedin}>
+                LinkedIn
+              </a>
+              !
+            </div>
           </section>
           <div className="my-20 text-gray-light text-center">
             <a href="#top">Back to Top</a>
