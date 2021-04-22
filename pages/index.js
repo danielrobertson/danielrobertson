@@ -69,82 +69,106 @@ export default function Home({ user, projects }) {
         </Head>
 
         <main id="top" className="">
-          <header className="flex flex-col items-center bg-green text-gray-lightest pb-14">
-            <img
-              src={image.fields.file.url}
-              className="rounded-full mt-16 h-52 w-52 text-xl"
-              alt="headshot"
-            />
-            <div className="text-xl mt-4">{title}</div>
+          <header className="bg-green pb-14">
+            <div className="container mx-auto flex flex-col items-center text-gray-lightest">
+              <img
+                src={image.fields.file.url}
+                className="rounded-full mt-16 h-52 w-52"
+                alt="headshot"
+              />
+              <div className="text-xl mt-4">{title}</div>
 
-            <nav className="mt-8 text-5xl font-thin">
-              <ol className="flex">
-                {navigationLinks.map((link) => (
-                  <li key={link.label} className="mx-6">
-                    <Link href={link.path}>
-                      <a href={link.path}>{link.label}</a>
-                    </Link>
-                  </li>
+              <nav className="mt-8 text-5xl font-thin">
+                <ol className="flex">
+                  {navigationLinks.map((link) => (
+                    <li key={link.label} className="mx-6">
+                      <Link href={link.path}>
+                        <a href={link.path}>{link.label}</a>
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+
+              <div className="mt-10 flex">
+                {socialLinks.map((social) => (
+                  <Link key={social} href={user[social]}>
+                    <a href={user[social]}>
+                      <Icon name={social} className="mx-4" />
+                    </a>
+                  </Link>
                 ))}
-              </ol>
-            </nav>
-
-            <div className="mt-10 flex">
-              {socialLinks.map((social) => (
-                <Link key={social} href={user[social]}>
-                  <a href={user[social]}>
-                    <Icon name={social} className="mx-4" />
-                  </a>
-                </Link>
-              ))}
+              </div>
             </div>
           </header>
-          <section className="mt-20 text-center text-gray-dark">
-            <a id="about" href="#about">
-              <h2 className="text-6xl">About</h2>
-            </a>
-            <div className="px-16 mt-10">{shortBio}</div>
-          </section>
-          <section className="mt-20 text-center text-gray-dark">
-            <a id="projects" href="#projects">
-              <h2 className="text-6xl">Projects</h2>
-            </a>
-            <ul className="mt-10 text-xl list-none">
-              {projectsToPreview.map(
-                ({ name: projectName, images }) => {
-                  const {
-                    fields: { file: thumbnail }
-                  } = images.find(
-                    ({ fields }) => fields.title === "thumbnail"
-                  );
 
-                  return (
-                    <li key={projectName}>
-                      <div className="">{projectName}</div>
-                      <img
-                        src={thumbnail.url}
-                        alt={`${projectName} thumbnail`}
-                      />
-                    </li>
-                  );
-                }
-              )}
-            </ul>
-          </section>
           <section className="mt-20 text-center text-gray-dark">
-            <a id="contact" href="#contact">
-              <h2 className="text-6xl">Contact</h2>
-            </a>
-            <div className="mt-10">
-              Let&apos;s connect on{" "}
-              <a className="underline" href={twitter}>
-                Twitter
-              </a>{" "}
-              or{" "}
-              <a className="underline" href={linkedin}>
-                LinkedIn
+            <div className="container mx-auto">
+              <a id="about" href="#about">
+                <h2 className="text-6xl">About</h2>
               </a>
-              !
+              <div className="px-16 mt-10">{shortBio}</div>
+            </div>
+          </section>
+
+          <section className="mt-20 p-5 pb-8 text-center text-gray-dark">
+            <div className="container mx-auto">
+              <a className="" id="projects" href="#projects">
+                <h2 className="text-6xl">Projects</h2>
+              </a>
+              <ul className="mt-10 list-none">
+                {projectsToPreview.map(
+                  ({ name: projectName, images }) => {
+                    const {
+                      fields: { file: thumbnail }
+                    } = images.find(
+                      ({ fields }) => fields.title === "thumbnail"
+                    );
+
+                    return (
+                      <li
+                        className="rounded-lg shadow-lg w-1/3 bg-white hover:opacity-75"
+                        key={projectName}
+                      >
+                        <Link
+                          className=""
+                          href={`/projects/${projectName}`}
+                        >
+                          <a href={`/projects/${projectName}`}>
+                            <img
+                              className="w-full rounded-t-lg"
+                              src={thumbnail.url}
+                              alt={`${projectName} thumbnail`}
+                            />
+                            <figcaption className="text-2xl py-2">
+                              {projectName}
+                            </figcaption>
+                          </a>
+                        </Link>
+                      </li>
+                    );
+                  }
+                )}
+              </ul>
+            </div>
+          </section>
+
+          <section className="mt-20 text-center text-gray-dark">
+            <div className="container mx-auto">
+              <a id="contact" href="#contact">
+                <h2 className="text-6xl">Contact</h2>
+              </a>
+              <div className="mt-10">
+                Let&apos;s connect on{" "}
+                <a className="underline" href={twitter}>
+                  Twitter
+                </a>{" "}
+                or{" "}
+                <a className="underline" href={linkedin}>
+                  LinkedIn
+                </a>
+                !
+              </div>
             </div>
           </section>
           <div className="my-20 text-gray-light text-center">
