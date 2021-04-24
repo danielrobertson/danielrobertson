@@ -133,12 +133,19 @@ export default function Home({ user, projects }) {
                   {shortBio}
                 </p>
                 {/* TODO use Next/Image */}
-                <img
-                  className="mx-auto"
-                  style={{ maxHeight: "600px" }}
-                  alt="daniel"
-                  src={aboutImage.fields.file.url}
-                />
+                {/* TODO photo carousel, auto spin through them with slick cross fade */}
+                <div className="relative">
+                  <img
+                    className="mx-auto"
+                    style={{ maxHeight: "600px" }}
+                    alt="daniel"
+                    src={aboutImage.fields.file.url}
+                  />
+                  {/* Store this in Contentful */}
+                  <div className="opacity-0 hover:opacity-75 absolute inset-0 flex justify-center items-center text-white text-xl bg-gray-900">
+                    Bat Bar 6th Street 📍Austin, TX
+                  </div>
+                </div>
               </div>
             </div>
           </section>
