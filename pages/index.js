@@ -37,6 +37,7 @@ const NUMBER_OF_PREVIEW_PROJECTS = 3;
 
 export default function Home({ user, projects }) {
   const {
+    aboutImage,
     github,
     image,
     linkedin,
@@ -110,7 +111,18 @@ export default function Home({ user, projects }) {
               <a id="about" href="#about">
                 <h2 className="text-6xl">About</h2>
               </a>
-              <div className="px-16 mt-10">{shortBio}</div>
+              <div className="flex px-16 mt-10">
+                <p className="whitespace-pre-line text-lg flex items-center p-16 w-1/2">
+                  {shortBio}
+                </p>
+                {/* TODO use Next/Image */}
+                <img
+                  className="mx-auto"
+                  style={{ maxHeight: "600px" }}
+                  alt="daniel"
+                  src={aboutImage.fields.file.url}
+                />
+              </div>
             </div>
           </section>
 
