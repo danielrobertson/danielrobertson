@@ -52,6 +52,16 @@ export default function Home({ user, projects }) {
     NUMBER_OF_PREVIEW_PROJECTS
   );
 
+  // seo juice 🧃
+  const googleStructuredData = {
+    "@context": "http://schema.org",
+    "@type": "Person",
+    alumniOf: "The University of Texas at Austin",
+    jobTitle: "Software engineer",
+    name: "Daniel Robertson",
+    url: "https://www.danielrobertson.me"
+  };
+
   return (
     <>
       <style global jsx>{`
@@ -67,6 +77,13 @@ export default function Home({ user, projects }) {
         <Head>
           <title>{name}</title>
           <link rel="icon" href="/favicon.ico" />
+          <script
+            type="application/ld+json"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(googleStructuredData)
+            }}
+          />
         </Head>
 
         <main id="top" className="">
@@ -112,7 +129,7 @@ export default function Home({ user, projects }) {
                 <h2 className="text-6xl">About</h2>
               </a>
               <div className="flex px-16 mt-10">
-                <p className="whitespace-pre-line text-lg flex items-center p-16 w-1/2">
+                <p className="whitespace-pre-line text-xl flex items-center p-16 w-1/2">
                   {shortBio}
                 </p>
                 {/* TODO use Next/Image */}
