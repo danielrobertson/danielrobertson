@@ -125,9 +125,11 @@ export default function Home({ user, projects }) {
 
           <section className="mt-20 text-center text-gray-dark">
             <div className="container mx-auto">
-              <a id="about" href="#about">
-                <h2 className="text-6xl">About</h2>
-              </a>
+              <h2 className="text-6xl">
+                <a id="about" href="#about">
+                  About
+                </a>
+              </h2>
               <div className="flex px-16 mt-10">
                 <p className="whitespace-pre-line text-xl flex items-center p-16 w-1/2">
                   {shortBio}
@@ -159,9 +161,11 @@ export default function Home({ user, projects }) {
 
           <section className="mt-20 p-5 pb-8 text-center text-gray-dark">
             <div className="container mx-auto">
-              <a className="" id="projects" href="#projects">
-                <h2 className="text-6xl">Projects</h2>
-              </a>
+              <h2 className="text-6xl">
+                <a className="" id="projects" href="#projects">
+                  Projects
+                </a>
+              </h2>
               <ul className="mt-10 list-none">
                 {projectsToPreview.map(
                   ({ name: projectName, images }) => {
@@ -201,9 +205,11 @@ export default function Home({ user, projects }) {
 
           <section className="mt-20 text-center text-gray-dark">
             <div className="container mx-auto">
-              <a id="contact" href="#contact">
-                <h2 className="text-6xl">Contact</h2>
-              </a>
+              <h2 className="text-6xl">
+                <a id="contact" href="#contact">
+                  Contact
+                </a>
+              </h2>
               <div className="mt-10">
                 Let&apos;s connect on{" "}
                 <a className="underline" href={twitter}>
