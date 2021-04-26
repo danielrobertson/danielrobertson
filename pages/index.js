@@ -168,36 +168,28 @@ export default function Home({ user, projects }) {
               </h2>
               <ul className="mt-10 list-none">
                 {projectsToPreview.map(
-                  ({ name: projectName, images }) => {
-                    const {
-                      fields: { file: thumbnail }
-                    } = images.find(
-                      ({ fields }) => fields.title === "thumbnail"
-                    );
-
-                    return (
-                      <li
-                        className="rounded-lg shadow-lg w-1/3 bg-white hover:opacity-75"
-                        key={projectName}
+                  ({ name: projectName, thumbnail }) => (
+                    <li
+                      className="rounded-lg shadow-lg w-1/3 bg-white hover:opacity-75"
+                      key={projectName}
+                    >
+                      <Link
+                        className=""
+                        href={`/projects/${projectName}`}
                       >
-                        <Link
-                          className=""
-                          href={`/projects/${projectName}`}
-                        >
-                          <a href={`/projects/${projectName}`}>
-                            <img
-                              className="w-full rounded-t-lg"
-                              src={thumbnail.url}
-                              alt={`${projectName} thumbnail`}
-                            />
-                            <figcaption className="text-2xl py-2">
-                              {projectName}
-                            </figcaption>
-                          </a>
-                        </Link>
-                      </li>
-                    );
-                  }
+                        <a href={`/projects/${projectName}`}>
+                          <img
+                            className="w-full rounded-t-lg"
+                            src={thumbnail.fields.file.url}
+                            alt={`${projectName} thumbnail`}
+                          />
+                          <figcaption className="text-2xl py-2">
+                            {projectName}
+                          </figcaption>
+                        </a>
+                      </Link>
+                    </li>
+                  )
                 )}
               </ul>
             </div>
