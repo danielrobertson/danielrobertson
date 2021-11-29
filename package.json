@@ -8,25 +8,25 @@
     "start": "next start"
   },
   "dependencies": {
-    "contentful": "^8.2.1",
+    "contentful": "^9.1.4",
     "next": "12",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "tailwindcss": "^2.0.4"
+    "tailwindcss": "^2.2.19"
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.5",
-    "eslint": "^7.23.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.23.1",
+    "autoprefixer": "^10.4.0",
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb": "^19.0.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.27.1",
     "install-peers": "^1.0.3",
-    "postcss": "^8.2.9",
-    "prettier": "^2.2.1"
+    "postcss": "^8.4.4",
+    "prettier": "^2.5.0"
   }
 }
