@@ -7,6 +7,9 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      sans: ["Roboto Slab", "serif"]
+    },
     listStyleType: {
       none: "none"
     },

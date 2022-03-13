@@ -92,7 +92,7 @@ export default function Home({ user, projects }) {
               />
               <div className="text-xl mt-4">{title}</div>
 
-              <nav className="mt-8 text-5xl font-thin">
+              <nav className="mt-8 text-5xl">
                 <ol className="flex">
                   {navigationLinks.map((link) => (
                     <li
