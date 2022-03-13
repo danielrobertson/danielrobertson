@@ -111,28 +111,63 @@ export default function Home({ user, projects }) {
                 {[
                   {
                     name: "twitter",
-                    icon: <Twitter height="30" width="30" />
+                    icon: (
+                      <Twitter
+                        aria-hidden="true"
+                        height="30"
+                        width="30"
+                      />
+                    )
                   },
                   {
                     name: "linkedin",
-                    icon: <Linkedin height="30" width="30" />
+                    icon: (
+                      <Linkedin
+                        aria-hidden="true"
+                        height="30"
+                        width="30"
+                      />
+                    )
                   },
                   {
                     name: "instagram",
-                    icon: <Instagram height="30" width="30" />
+                    icon: (
+                      <Instagram
+                        aria-hidden="true"
+                        height="30"
+                        width="30"
+                      />
+                    )
                   },
                   {
                     name: "github",
-                    icon: <Github height="30" width="30" />
+                    icon: (
+                      <Github
+                        aria-hidden="true"
+                        height="30"
+                        width="30"
+                      />
+                    )
                   },
                   {
                     name: "soundcloud",
-                    icon: <Soundcloud height="30" width="30" />
+                    icon: (
+                      <Soundcloud
+                        aria-hidden="true"
+                        height="30"
+                        width="30"
+                      />
+                    )
                   },
                   {
                     name: "email",
                     icon: (
-                      <Email className="" height="30" width="30" />
+                      <Email
+                        className=""
+                        aria-hidden="true"
+                        height="30"
+                        width="30"
+                      />
                     )
                   }
                 ].map((social) => (
@@ -142,6 +177,7 @@ export default function Home({ user, projects }) {
                       href={user[social.name]}
                     >
                       {social.icon}
+                      <span className="sr-only">{social.name}</span>
                     </a>
                   </Link>
                 ))}
