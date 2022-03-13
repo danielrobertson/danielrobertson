@@ -3,7 +3,12 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import fetchProjects from "./api/fetchProjects";
 import fetchUser from "./api/fetchUser";
-import Icon from "../components/Icon";
+import Twitter from "../components/icons/twitter.svg";
+import Linkedin from "../components/icons/linkedin.svg";
+import Instagram from "../components/icons/instagram.svg";
+import Github from "../components/icons/github.svg";
+import Soundcloud from "../components/icons/soundcloud.svg";
+import Email from "../components/icons/email.svg";
 
 const navigationLinks = Object.freeze([
   {
@@ -22,15 +27,6 @@ const navigationLinks = Object.freeze([
     label: "Contact",
     path: "#contact"
   }
-]);
-
-const socialLinks = Object.freeze([
-  "twitter",
-  "linkedin",
-  "instagram",
-  "github",
-  "soundcloud",
-  "email"
 ]);
 
 const NUMBER_OF_PREVIEW_PROJECTS = 3;
@@ -101,7 +97,7 @@ export default function Home({ user, projects }) {
                   {navigationLinks.map((link) => (
                     <li
                       key={link.label}
-                      className="mx-6 hover:text-gray-600"
+                      className="mx-6 hover:text-gray-500"
                     >
                       <Link href={link.path}>
                         <a href={link.path}>{link.label}</a>
@@ -112,10 +108,40 @@ export default function Home({ user, projects }) {
               </nav>
 
               <div className="mt-10 flex">
-                {socialLinks.map((social) => (
-                  <Link key={social} href={user[social]}>
-                    <a href={user[social]}>
-                      <Icon name={social} className="mx-4" />
+                {[
+                  {
+                    name: "twitter",
+                    icon: <Twitter height="30" width="30" />
+                  },
+                  {
+                    name: "linkedin",
+                    icon: <Linkedin height="30" width="30" />
+                  },
+                  {
+                    name: "instagram",
+                    icon: <Instagram height="30" width="30" />
+                  },
+                  {
+                    name: "github",
+                    icon: <Github height="30" width="30" />
+                  },
+                  {
+                    name: "soundcloud",
+                    icon: <Soundcloud height="30" width="30" />
+                  },
+                  {
+                    name: "email",
+                    icon: (
+                      <Email className="" height="30" width="30" />
+                    )
+                  }
+                ].map((social) => (
+                  <Link key={social.name} href={user[social.name]}>
+                    <a
+                      className="mx-3 fill-white hover:fill-gray-500"
+                      href={user[social.name]}
+                    >
+                      {social.icon}
                     </a>
                   </Link>
                 ))}
