@@ -14,8 +14,9 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       black: colors.black,
-      white: { DEFAULT: "#FEFFFE" },
+      white: { ...colors.white, DEFAULT: "#FEFFFE" },
       green: {
+        ...colors.green,
         DEFAULT: "#00bfa5"
       },
       gray: {
@@ -25,12 +26,15 @@ module.exports = {
         lightest: "#f3f3f2"
       },
       blue: {
+        ...colors.blue,
         dark: "#1D3354"
       },
       red: {
+        ...colors.red,
         DEFAULT: "#F25F5C"
       },
       purple: {
+        ...colors.purple,
         lavender: "#E9EBF8"
       }
     }
