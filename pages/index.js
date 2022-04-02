@@ -84,16 +84,16 @@ export default function Home({ user, projects }) {
           />
         </Head>
 
-        <main id="top" className="">
+        <main id="top">
           <header className="bg-green pb-14">
             <div className="container mx-auto flex flex-col items-center text-gray-lightest">
-              <div className="mt-8">
+              <div className="mt-8 h-52 w-52 relative">
                 <Image
                   className="rounded-full"
                   src={`https:${image.fields.file.url}`}
                   alt="daniel"
-                  width="208px"
-                  height="208px"
+                  layout="fill"
+                  objectFit="cover"
                   loading="eager"
                 />
               </div>
