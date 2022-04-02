@@ -67,6 +67,7 @@ export default function Home({ user, projects }) {
         div#__next,
         div#__next > div {
           height: 100%;
+          // percent is preferable to vh for mobile screens where vh is the max size, not current size
         }
       `}</style>
       <div className="flex flex-col min-h-full">
@@ -228,11 +229,11 @@ export default function Home({ user, projects }) {
                   Projects
                 </a>
               </h2>
-              <ul className="mt-10 list-none">
+              <ul className="mt-10 flex list-none gap-4">
                 {projectsToPreview.map(
                   ({ name: projectName, thumbnail }) => (
                     <li
-                      className="rounded-lg shadow-lg w-1/3 bg-white hover:opacity-75"
+                      className="rounded-lg shadow-lg w-1/3  bg-white hover:opacity-75"
                       key={projectName}
                     >
                       <Link
@@ -255,6 +256,14 @@ export default function Home({ user, projects }) {
                 )}
               </ul>
             </div>
+          </section>
+
+          <section className="outline-1 outline-green-400 outline mt-20 text-center text-gray-dark">
+            <h2 className="text-6xl">
+              <a id="resume" href="#resume">
+                Resume
+              </a>
+            </h2>
           </section>
 
           <section className="mt-20 text-center text-gray-dark">
