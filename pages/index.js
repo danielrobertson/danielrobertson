@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import PropTypes from "prop-types";
 import fetchProjects from "./api/fetchProjects";
 import fetchUser from "./api/fetchUser";
@@ -86,11 +87,17 @@ export default function Home({ user, projects }) {
         <main id="top" className="">
           <header className="bg-green pb-14">
             <div className="container mx-auto flex flex-col items-center text-gray-lightest">
-              <img
-                src={image.fields.file.url}
-                className="rounded-full mt-16 h-52 w-52"
-                alt="headshot"
-              />
+              <div className="mt-8">
+                <Image
+                  className="rounded-full"
+                  src={`https:${image.fields.file.url}`}
+                  alt="daniel"
+                  width="208px"
+                  height="208px"
+                  loading="eager"
+                />
+              </div>
+
               <div className="text-xl mt-4">{title}</div>
 
               <nav className="mt-8 text-5xl">
@@ -193,32 +200,9 @@ export default function Home({ user, projects }) {
                   About
                 </a>
               </h2>
-              <div className="flex px-16 mt-10">
-                <p className="whitespace-pre-line text-xl flex items-center p-16 w-1/2">
-                  {shortBio}
-                </p>
-                {/* TODO use Next/Image */}
-                {/* TODO photo carousel, auto spin through them with slick cross fade */}
-                <div className="relative mx-auto">
-                  <img
-                    className=""
-                    style={{ maxHeight: "600px" }}
-                    alt="daniel"
-                    src={aboutImage.fields.file.url}
-                  />
-                  {/* Store this in Contentful */}
-                  <div className="opacity-0 hover:opacity-75 absolute inset-0 flex justify-center flex-col items-center text-white text-xl bg-gray-900">
-                    Bat Bar 6th Street 📍Austin, TX
-                    <a
-                      className="mt-8"
-                      href="https://www.instagram.com/p/BsvfgQtFJeK/"
-                    >
-                      See the band videos{" "}
-                      <span className="underline">here!</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <p className="mx-auto p-8 whitespace-pre-line text-xl lg:max-w-2xl">
+                {shortBio}
+              </p>
             </div>
           </section>
 
@@ -229,26 +213,31 @@ export default function Home({ user, projects }) {
                   Projects
                 </a>
               </h2>
-              <ul className="mt-10 flex list-none gap-4">
+              <ul className="mt-10 lg:flex list-none">
                 {projectsToPreview.map(
                   ({ name: projectName, thumbnail }) => (
                     <li
-                      className="rounded-lg shadow-lg w-1/3  bg-white hover:opacity-75"
+                      className="rounded-lg shadow-lg m-5 lg:w-1/3  bg-white hover:opacity-75"
                       key={projectName}
                     >
-                      <Link
-                        className=""
-                        href={`/projects/${projectName}`}
-                      >
+                      <Link href={`/projects/${projectName}`}>
                         <a href={`/projects/${projectName}`}>
-                          <img
+                          <Image
                             className="w-full rounded-t-lg"
-                            src={thumbnail.fields.file.url}
+                            src={`https:${thumbnail.fields.file.url}`}
                             alt={`${projectName} thumbnail`}
+                            width={
+                              thumbnail.fields.file.details.image
+                                .width
+                            }
+                            height={
+                              thumbnail.fields.file.details.image
+                                .height
+                            }
                           />
-                          <figcaption className="text-2xl py-2">
+                          <div className="text-2xl py-2">
                             {projectName}
-                          </figcaption>
+                          </div>
                         </a>
                       </Link>
                     </li>
@@ -258,7 +247,7 @@ export default function Home({ user, projects }) {
             </div>
           </section>
 
-          <section className="outline-1 outline-green-400 outline mt-20 text-center text-gray-dark">
+          <section className="mt-20 text-center text-gray-dark">
             <h2 className="text-6xl">
               <a id="resume" href="#resume">
                 Resume
