@@ -10,6 +10,7 @@ import Instagram from "../components/icons/instagram.svg";
 import Github from "../components/icons/github.svg";
 import Soundcloud from "../components/icons/soundcloud.svg";
 import Email from "../components/icons/email.svg";
+import Bars from "../components/icons/bars.svg";
 
 const navigationLinks = Object.freeze([
   {
@@ -85,9 +86,9 @@ export default function Home({ user, projects }) {
         </Head>
 
         <main id="top">
-          <header className="bg-green pb-14">
-            <div className="container mx-auto flex flex-col items-center text-gray-lightest">
-              <div className="mt-8 h-52 w-52 relative">
+          <header className="bg-green lg:pb-14">
+            <div className="container relative mx-auto flex flex-col items-center text-gray-lightest">
+              <div className="my-8 h-20 w-20 lg:h-52 lg:w-52 relative">
                 <Image
                   className="rounded-full"
                   src={`https:${image.fields.file.url}`}
@@ -98,9 +99,16 @@ export default function Home({ user, projects }) {
                 />
               </div>
 
-              <div className="text-xl mt-4">{title}</div>
+              <button
+                className="absolute right-0 p-3 h-full"
+                onClick={() => console.log("menu click")}
+              >
+                <Bars className="h-10 fill-gray-dark" />
+              </button>
 
-              <nav className="mt-8 text-5xl">
+              <div className="hidden lg:block text-2xl">{title}</div>
+
+              <nav className="hidden lg:block mt-8 text-5xl">
                 <ol className="flex">
                   {navigationLinks.map((link) => (
                     <li
@@ -115,7 +123,7 @@ export default function Home({ user, projects }) {
                 </ol>
               </nav>
 
-              <div className="mt-10 flex">
+              <div className="hidden lg:flex mt-10">
                 {[
                   {
                     name: "twitter",
