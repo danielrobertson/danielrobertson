@@ -11,6 +11,7 @@ import Github from "../components/icons/github.svg";
 import Soundcloud from "../components/icons/soundcloud.svg";
 import Email from "../components/icons/email.svg";
 import Bars from "../components/icons/bars.svg";
+import UpArrow from "../components/icons/up-arrow.svg";
 
 const navigationLinks = Object.freeze([
   {
@@ -208,7 +209,7 @@ export default function Home({ user, projects }) {
                   About
                 </a>
               </h2>
-              <p className="mx-auto p-8 whitespace-pre-line text-xl lg:max-w-2xl">
+              <p className="mx-auto p-8 whitespace-pre-line text-xl lg:max-w-3xl">
                 {shortBio}
               </p>
             </div>
@@ -283,8 +284,14 @@ export default function Home({ user, projects }) {
               </div>
             </div>
           </section>
-          <div className="my-20 text-gray-light text-center">
-            <a href="#top">Back to Top</a>
+          <div className="my-20 text-center">
+            <a
+              href="#top"
+              className="flex justify-center items-center"
+            >
+              <UpArrow className="h-5 " />
+              <p className="ml-2">Back to Top</p>
+            </a>
           </div>
         </main>
 
