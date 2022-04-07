@@ -95,7 +95,7 @@ export default function Home({ user, projects }) {
         </Head>
 
         <main id="top">
-          <header className="bg-green lg:pb-14">
+          <header className="bg-blue-dark lg:pb-14">
             <div className="container relative mx-auto flex flex-col items-center text-gray-lightest">
               <div className="my-8 h-20 w-20 lg:h-52 lg:w-52 relative">
                 <Image
@@ -109,7 +109,7 @@ export default function Home({ user, projects }) {
               </div>
 
               <button
-                className="absolute right-0 p-3 h-full"
+                className="hidden absolute right-0 p-3 h-full"
                 onClick={() => console.log("menu click")}
               >
                 <Bars className="h-10 fill-gray-dark" />

@@ -30,7 +30,7 @@ module.exports = {
       },
       blue: {
         ...colors.blue,
-        dark: "#1D3354"
+        dark: "#1B4482"
       },
       red: {
         ...colors.red,
