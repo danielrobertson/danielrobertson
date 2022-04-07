@@ -16,31 +16,10 @@ import Bars from "../components/icons/bars.svg";
 import UpArrow from "../components/icons/up-arrow.svg";
 import ExternalLink from "../components/icons/external-link.svg";
 
-const navigationLinks = Object.freeze([
-  {
-    label: "About",
-    path: "#about"
-  },
-  {
-    label: "Projects",
-    path: "#projects"
-  },
-  {
-    label: "Resume",
-    path: "#resume"
-  },
-  {
-    label: "Contact",
-    path: "#contact"
-  }
-]);
-
 const NUMBER_OF_PREVIEW_PROJECTS = 6;
 
 export default function Home({ user, projects }) {
   const {
-    aboutImage,
-    github,
     image,
     linkedin,
     name,
@@ -95,7 +74,7 @@ export default function Home({ user, projects }) {
         </Head>
 
         <main id="top">
-          <header className="bg-blue-dark lg:pb-14">
+          <header className="bg-blue-dark pb-8">
             <div className="container relative mx-auto flex flex-col items-center text-gray-lightest">
               <div className="my-8 h-20 w-20 lg:h-52 lg:w-52 relative">
                 <Image
@@ -107,106 +86,11 @@ export default function Home({ user, projects }) {
                   loading="eager"
                 />
               </div>
-
-              <button
-                className="hidden absolute right-0 p-3 h-full"
-                onClick={() => console.log("menu click")}
-              >
-                <Bars className="h-10 fill-gray-dark" />
-                <span className="sr-only">Navigation menu</span>
-              </button>
-
-              <div className="hidden lg:block text-2xl">{title}</div>
-
-              <nav className="hidden lg:block mt-8 text-5xl">
-                <ol className="flex">
-                  {navigationLinks.map((link) => (
-                    <li
-                      key={link.label}
-                      className="mx-6 hover:text-gray-500"
-                    >
-                      <Link href={link.path}>
-                        <a href={link.path}>{link.label}</a>
-                      </Link>
-                    </li>
-                  ))}
-                </ol>
-              </nav>
-
-              <div className="hidden lg:flex mt-10">
-                {[
-                  {
-                    name: "twitter",
-                    icon: (
-                      <Twitter
-                        aria-hidden="true"
-                        height="30"
-                        width="30"
-                      />
-                    )
-                  },
-                  {
-                    name: "linkedin",
-                    icon: (
-                      <Linkedin
-                        aria-hidden="true"
-                        height="30"
-                        width="30"
-                      />
-                    )
-                  },
-                  {
-                    name: "instagram",
-                    icon: (
-                      <Instagram
-                        aria-hidden="true"
-                        height="30"
-                        width="30"
-                      />
-                    )
-                  },
-                  {
-                    name: "github",
-                    icon: (
-                      <Github
-                        aria-hidden="true"
-                        height="30"
-                        width="30"
-                      />
-                    )
-                  },
-                  {
-                    name: "soundcloud",
-                    icon: (
-                      <Soundcloud
-                        aria-hidden="true"
-                        height="30"
-                        width="30"
-                      />
-                    )
-                  },
-                  {
-                    name: "email",
-                    icon: (
-                      <Email
-                        className=""
-                        aria-hidden="true"
-                        height="30"
-                        width="30"
-                      />
-                    )
-                  }
-                ].map((social) => (
-                  <Link key={social.name} href={user[social.name]}>
-                    <a
-                      className="mx-3 fill-white hover:fill-gray-500"
-                      href={user[social.name]}
-                    >
-                      {social.icon}
-                      <span className="sr-only">{social.name}</span>
-                    </a>
-                  </Link>
-                ))}
+              <h1 className="text-4xl lg:text-5xl">
+                Daniel Robertson
+              </h1>
+              <div className="mt-3 text-xl text-center lg:text-2xl lg:py-2">
+                {title}
               </div>
             </div>
           </header>
@@ -328,11 +212,84 @@ export default function Home({ user, projects }) {
           </div>
         </main>
 
-        <footer className="mt-auto text-center py-16 text-gray-lightest w-full bg-black">
-          Made in Austin <span className="pr-0.5">🌎</span> by
-          <a className="underline pl-1" href={twitter}>
-            danielrobertson
-          </a>
+        <footer className="mt-auto text-center py-8 text-gray-lightest w-full bg-gray-darker">
+          <div className="flex justify-center pt-3">
+            {[
+              {
+                name: "twitter",
+                icon: (
+                  <Twitter
+                    aria-hidden="true"
+                    height="30"
+                    width="30"
+                  />
+                )
+              },
+              {
+                name: "linkedin",
+                icon: (
+                  <Linkedin
+                    aria-hidden="true"
+                    height="30"
+                    width="30"
+                  />
+                )
+              },
+              {
+                name: "instagram",
+                icon: (
+                  <Instagram
+                    aria-hidden="true"
+                    height="30"
+                    width="30"
+                  />
+                )
+              },
+              {
+                name: "github",
+                icon: (
+                  <Github aria-hidden="true" height="30" width="30" />
+                )
+              },
+              {
+                name: "soundcloud",
+                icon: (
+                  <Soundcloud
+                    aria-hidden="true"
+                    height="30"
+                    width="30"
+                  />
+                )
+              },
+              {
+                name: "email",
+                icon: (
+                  <Email
+                    className=""
+                    aria-hidden="true"
+                    height="30"
+                    width="30"
+                  />
+                )
+              }
+            ].map((social) => (
+              <Link key={social.name} href={user[social.name]}>
+                <a
+                  className="mx-3 fill-white hover:fill-gray-500"
+                  href={user[social.name]}
+                >
+                  {social.icon}
+                  <span className="sr-only">{social.name}</span>
+                </a>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-10">
+            Made in Austin <span className="pr-0.5">🌎</span> by
+            <a className="underline pl-1" href={twitter}>
+              danielrobertson
+            </a>
+          </div>
         </footer>
       </div>
     </>
