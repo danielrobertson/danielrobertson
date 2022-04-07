@@ -32,7 +32,7 @@ const navigationLinks = Object.freeze([
   }
 ]);
 
-const NUMBER_OF_PREVIEW_PROJECTS = 3;
+const NUMBER_OF_PREVIEW_PROJECTS = 6;
 
 export default function Home({ user, projects }) {
   const {
@@ -222,19 +222,19 @@ export default function Home({ user, projects }) {
                   Projects
                 </a>
               </h2>
-              <ul className="mt-10 lg:flex list-none">
+              <ul className="mt-8 lg:flex lg:justify-center lg:flex-wrap list-none">
                 {projectsToPreview.map(
                   ({ name: projectName, thumbnail }) => (
                     <li
-                      className="rounded-lg shadow-lg m-5 lg:w-1/3  bg-white hover:opacity-75"
+                      className="mt-10 lg:m-6 lg:max-w-md bg-white hover:opacity-75"
                       key={projectName}
                     >
                       <Link href={`/projects/${projectName}`}>
                         <a href={`/projects/${projectName}`}>
                           <Image
-                            className="w-full rounded-t-lg"
+                            className="w-full rounded-md"
                             src={`https:${thumbnail.fields.file.url}`}
-                            alt={`${projectName} thumbnail`}
+                            alt={`${projectName} project thumbnail`}
                             width={
                               thumbnail.fields.file.details.image
                                 .width
@@ -244,7 +244,7 @@ export default function Home({ user, projects }) {
                                 .height
                             }
                           />
-                          <div className="text-2xl py-2">
+                          <div className="text-2xl py-3">
                             {projectName}
                           </div>
                         </a>
