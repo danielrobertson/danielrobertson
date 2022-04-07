@@ -109,6 +109,7 @@ export default function Home({ user, projects }) {
                 onClick={() => console.log("menu click")}
               >
                 <Bars className="h-10 fill-gray-dark" />
+                <span className="sr-only">Navigation menu</span>
               </button>
 
               <div className="hidden lg:block text-2xl">{title}</div>
