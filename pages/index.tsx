@@ -2,8 +2,10 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import PropTypes from "prop-types";
+
 import fetchProjects from "./api/fetchProjects";
 import fetchUser from "./api/fetchUser";
+
 import Twitter from "../components/icons/twitter.svg";
 import Linkedin from "../components/icons/linkedin.svg";
 import Instagram from "../components/icons/instagram.svg";
@@ -12,6 +14,7 @@ import Soundcloud from "../components/icons/soundcloud.svg";
 import Email from "../components/icons/email.svg";
 import Bars from "../components/icons/bars.svg";
 import UpArrow from "../components/icons/up-arrow.svg";
+import ExternalLink from "../components/icons/external-link.svg";
 
 const navigationLinks = Object.freeze([
   {
@@ -41,6 +44,7 @@ export default function Home({ user, projects }) {
     image,
     linkedin,
     name,
+    resumeUrl,
     shortBio,
     title,
     twitter
@@ -262,6 +266,20 @@ export default function Home({ user, projects }) {
                 Resume
               </a>
             </h2>
+            <a
+              className="flex justify-center p-5 mt-5"
+              href={resumeUrl}
+            >
+              <p className="underline text-lg">
+                Downloadable version
+              </p>
+              <ExternalLink
+                className="ml-1 mt-.5"
+                aria-hidden="true"
+                height="30"
+                width="30"
+              />
+            </a>
           </section>
 
           <section className="mt-20 text-center text-gray-dark">
@@ -289,7 +307,7 @@ export default function Home({ user, projects }) {
               href="#top"
               className="flex justify-center items-center"
             >
-              <UpArrow className="h-5 " />
+              <UpArrow aria-hidden="true" height="20" width="20" />
               <p className="ml-2">Back to Top</p>
             </a>
           </div>
