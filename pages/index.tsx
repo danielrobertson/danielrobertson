@@ -12,7 +12,6 @@ import Instagram from "../components/icons/instagram.svg";
 import Github from "../components/icons/github.svg";
 import Soundcloud from "../components/icons/soundcloud.svg";
 import Email from "../components/icons/email.svg";
-import Bars from "../components/icons/bars.svg";
 import UpArrow from "../components/icons/up-arrow.svg";
 import ExternalLink from "../components/icons/external-link.svg";
 
@@ -180,7 +179,10 @@ export default function Home({ user, projects }) {
               </h2>
               <div className="mt-10">
                 I&apos;m open for hire, questions, or{" "}
-                <a href="https://calendly.com/danielrobertson/coffee-chat">
+                <a
+                  className="underline underline-offset-1"
+                  href="https://calendly.com/danielrobertson/coffee-chat"
+                >
                   coffee chats ☕️
                 </a>
                 . Connect with me on{" "}
@@ -275,7 +277,7 @@ export default function Home({ user, projects }) {
             ].map((social) => (
               <Link key={social.name} href={user[social.name]}>
                 <a
-                  className="mx-3 fill-white hover:fill-gray-500"
+                  className="mx-3 fill-white hover:fill-gray-300"
                   href={user[social.name]}
                 >
                   {social.icon}
