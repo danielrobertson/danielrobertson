@@ -295,7 +295,11 @@ export default function Home({ user, projects }) {
                 </a>
               </h2>
               <div className="mt-10">
-                Let&apos;s connect on{" "}
+                I&apos;m open for hire, questions, or{" "}
+                <a href="https://calendly.com/danielrobertson/coffee-chat">
+                  coffee chats ☕️
+                </a>
+                . Connect with me on{" "}
                 <a
                   className="underline underline-offset-1"
                   href={twitter}
