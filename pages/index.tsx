@@ -270,7 +270,7 @@ export default function Home({ user, projects }) {
               className="flex justify-center p-5 mt-5"
               href={resumeUrl}
             >
-              <p className="underline text-lg">
+              <p className="underline text-lg underline-offset-1">
                 Downloadable version
               </p>
               <ExternalLink
@@ -291,11 +291,17 @@ export default function Home({ user, projects }) {
               </h2>
               <div className="mt-10">
                 Let&apos;s connect on{" "}
-                <a className="underline" href={twitter}>
+                <a
+                  className="underline underline-offset-1"
+                  href={twitter}
+                >
                   Twitter
                 </a>{" "}
                 or{" "}
-                <a className="underline" href={linkedin}>
+                <a
+                  className="underline underline-offset-1"
+                  href={linkedin}
+                >
                   LinkedIn
                 </a>
                 !
