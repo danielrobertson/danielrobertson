@@ -80,6 +80,10 @@ export default function Home({ user, projects }) {
       <div className="flex flex-col min-h-full">
         <Head>
           <title>{name}</title>
+          <meta
+            name="description"
+            content="Daniel Robertson, senior software engineer from Austin, Texas"
+          />
           <link rel="icon" href="/favicon.ico" />
           <script
             type="application/ld+json"
