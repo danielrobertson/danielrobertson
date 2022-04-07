@@ -328,11 +328,11 @@ export default function Home({ user, projects }) {
           </div>
         </main>
 
-        <footer className="mt-auto text-center py-16 text-gray-lightest w-full bg-blue-dark">
-          Made in Austin 📍 by{" "}
-          <a className="underline" href={`${github}/danielrobertson`}>
+        <footer className="mt-auto text-center py-16 text-gray-lightest w-full bg-black">
+          Made in Austin <span className="pr-0.5">🌎</span> by
+          <a className="underline pl-1" href={twitter}>
             danielrobertson
-          </a>{" "}
+          </a>
         </footer>
       </div>
     </>

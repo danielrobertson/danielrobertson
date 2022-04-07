@@ -32,6 +32,10 @@ module.exports = {
         ...colors.blue,
         dark: "#1B4482"
       },
+      black: {
+        ...colors.blue,
+        DEFAULT: "#01161e"
+      },
       red: {
         ...colors.red,
         DEFAULT: "#F25F5C"
