@@ -119,35 +119,29 @@ export default function Home({ user, projects }) {
                 </a>
               </h2>
               <ul className="mt-8 lg:flex lg:justify-center lg:flex-wrap list-none">
-                {projectsToPreview.map(
-                  ({ name: projectName, thumbnail }) => (
-                    <li
-                      className="mt-10 lg:m-6 lg:max-w-md bg-white hover:opacity-75"
-                      key={projectName}
-                    >
-                      <Link href={`/projects/${projectName}`}>
-                        <a href={`/projects/${projectName}`}>
-                          <Image
-                            className="w-full rounded-md"
-                            src={`https:${thumbnail.fields.file.url}`}
-                            alt={`${projectName} project thumbnail`}
-                            width={
-                              thumbnail.fields.file.details.image
-                                .width
-                            }
-                            height={
-                              thumbnail.fields.file.details.image
-                                .height
-                            }
-                          />
-                          <div className="text-2xl py-3">
-                            {projectName}
-                          </div>
-                        </a>
-                      </Link>
-                    </li>
-                  )
-                )}
+                {projectsToPreview.map(({ name, thumbnail, id }) => (
+                  <li
+                    className="mt-10 lg:m-6 lg:max-w-md bg-white hover:opacity-75"
+                    key={name}
+                  >
+                    <Link href={`/project/${id}`}>
+                      <a href={`/project/${id}`}>
+                        <Image
+                          className="w-full rounded-md"
+                          src={`https:${thumbnail.fields.file.url}`}
+                          alt={`${name} project thumbnail`}
+                          width={
+                            thumbnail.fields.file.details.image.width
+                          }
+                          height={
+                            thumbnail.fields.file.details.image.height
+                          }
+                        />
+                        <div className="text-2xl py-3">{name}</div>
+                      </a>
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </section>
@@ -297,15 +291,9 @@ export async function getStaticProps() {
     fetchProjects()
   ]);
 
-  const projects = projectsResponse.items.map((p) => p.fields);
-  console.log(
-    "🚀 ~ file: index.js ~ line 51 ~ getStaticProps ~ projects",
-    JSON.stringify(projects, null, 2)
-  );
-  console.log(
-    "🚀 ~ file: index.js ~ line 49 ~ getStaticProps ~ userResponse",
-    userResponse
-  );
+  const projects = projectsResponse.items.map((p) => {
+    return { ...p.fields, id: p.sys.id };
+  });
 
   return {
     props: {

@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "contentful": "^9.1.4",
+    "contentful": "^10.0.0-beta-v10.3",
     "next": "^12.1.4",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
