@@ -92,7 +92,7 @@ export default function Home({ user, projects }) {
               <h1 className="text-4xl lg:text-5xl">
                 Daniel Robertson
               </h1>
-              <div className="mt-3 text-xl text-center lg:text-2xl lg:py-2">
+              <div className="mt-3 text-lg font-light text-center lg:text-2xl px-2 lg:py-2">
                 {title}
               </div>
             </div>
@@ -105,7 +105,7 @@ export default function Home({ user, projects }) {
                   About
                 </a>
               </h2>
-              <p className="mx-auto p-8 whitespace-pre-line text-xl lg:max-w-3xl">
+              <p className="mx-auto p-8 whitespace-pre-line font-light text-xl lg:max-w-3xl">
                 {shortBio}
               </p>
             </div>
@@ -162,7 +162,7 @@ export default function Home({ user, projects }) {
               className="flex justify-center p-5 mt-5"
               href={resumeUrl}
             >
-              <p className="underline text-lg underline-offset-1">
+              <p className="font-light underline text-lg underline-offset-1">
                 Downloadable version
               </p>
               <ExternalLink
@@ -181,7 +181,7 @@ export default function Home({ user, projects }) {
                   Contact
                 </a>
               </h2>
-              <div className="mt-10">
+              <div className="mt-10 px-2 font-light">
                 I&apos;m open for hire, questions, or{" "}
                 <a
                   className="underline underline-offset-1"
@@ -213,7 +213,7 @@ export default function Home({ user, projects }) {
               className="flex justify-center items-center"
             >
               <UpArrow aria-hidden="true" height="20" width="20" />
-              <p className="ml-2">Back to Top</p>
+              <p className="ml-2 font-light">Back to Top</p>
             </a>
           </div>
         </main>
@@ -266,17 +266,6 @@ export default function Home({ user, projects }) {
                     width="30"
                   />
                 )
-              },
-              {
-                name: "email",
-                icon: (
-                  <Email
-                    className=""
-                    aria-hidden="true"
-                    height="30"
-                    width="30"
-                  />
-                )
               }
             ].map((social) => (
               <Link key={social.name} href={user[social.name]}>
@@ -290,7 +279,7 @@ export default function Home({ user, projects }) {
               </Link>
             ))}
           </div>
-          <div className="mt-10">
+          <div className="mt-10 text-sm">
             Made in Austin <span className="pr-0.5">🌎</span> by
             <a className="underline pl-1" href={twitter}>
               danielrobertson
