@@ -12,7 +12,6 @@ import Linkedin from "../components/icons/linkedin.svg";
 import Instagram from "../components/icons/instagram.svg";
 import Github from "../components/icons/github.svg";
 import Soundcloud from "../components/icons/soundcloud.svg";
-import Email from "../components/icons/email.svg";
 import UpArrow from "../components/icons/up-arrow.svg";
 import ExternalLink from "../components/icons/external-link.svg";
 
