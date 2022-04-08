@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import PropTypes from "prop-types";
 
 import fetchProjects from "./api/fetchProjects";
@@ -20,6 +21,7 @@ const NUMBER_OF_PREVIEW_PROJECTS = 6;
 export default function Home({ user, projects }) {
   const {
     image,
+    github,
     linkedin,
     name,
     resumeUrl,
@@ -28,20 +30,12 @@ export default function Home({ user, projects }) {
     twitter
   } = user;
 
+  const { url: headshot } = image.fields.file;
+
   const projectsToPreview = projects.slice(
     0,
     NUMBER_OF_PREVIEW_PROJECTS
   );
-
-  // seo juice 🧃
-  const googleStructuredData = {
-    "@context": "http://schema.org",
-    "@type": "Person",
-    alumniOf: "The University of Texas at Austin",
-    jobTitle: "Software engineer",
-    name: "Daniel Robertson",
-    url: "https://www.danielrobertson.me"
-  };
 
   return (
     <>
@@ -63,14 +57,24 @@ export default function Home({ user, projects }) {
             content="Daniel Robertson, senior software engineer from Austin, Texas"
           />
           <link rel="icon" href="/favicon.ico" />
-          <script
-            type="application/ld+json"
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(googleStructuredData)
-            }}
-          />
         </Head>
+        <Script id="structured-schema" type="application/ld+json">
+          {JSON.stringify({
+            "@context": "http://schema.org",
+            "@type": "Person",
+            alumniOf: "The University of Texas at Austin",
+            jobTitle: "Software engineer",
+            name: "Daniel Robertson",
+            url: "https://www.danielrobertson.me",
+            sameAs: [twitter, github, linkedin],
+            image: headshot,
+            worksFor: {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              url: "https://www.leafly.com/"
+            }
+          })}
+        </Script>
 
         <main id="top">
           <header className="bg-blue-dark pb-8">
@@ -78,7 +82,7 @@ export default function Home({ user, projects }) {
               <div className="my-8 h-20 w-20 lg:h-52 lg:w-52 relative">
                 <Image
                   className="rounded-full"
-                  src={`https:${image.fields.file.url}`}
+                  src={`https:${headshot}`}
                   alt="daniel"
                   layout="fill"
                   objectFit="cover"
