@@ -1,10 +1,10 @@
 import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import Image from "next/image";
 import fetchProject from "../api/fetchProject";
 import fetchUser from "../api/fetchUser";
 import Header from "../../components/Header";
 import Github from "../../components/icons/github.svg";
-import LeftArrow from "../../components/icons/left-arrow.svg";
 import Link from "next/link";
 
 type Props = {
@@ -12,8 +12,11 @@ type Props = {
   user: any;
 };
 
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+
 const ProjectPage = ({ project, user }: Props) => {
   const { githubUrl, liveUrl, name } = project;
+
   return (
     <div>
       <Link href={`/`}>
@@ -26,9 +29,24 @@ const ProjectPage = ({ project, user }: Props) => {
       </Link>
       <main className="text-center text-gray-dark">
         <h1 className="text-6xl p-3 mt-10">{name}</h1>
-        <p className="p-5 mx-auto lg:max-w-3xl">
-          {project.description.content[0]?.content[0]?.value}
-        </p>
+        <div className="px-5 mt-8">
+          <div className="mx-auto">
+            <Image
+              className="w-full rounded-md"
+              src={`https:${project.thumbnail.fields.file.url}`}
+              alt={`${name} project thumbnail`}
+              width={
+                project.thumbnail.fields.file.details.image.width
+              }
+              height={
+                project.thumbnail.fields.file.details.image.height
+              }
+            />
+          </div>
+          <p className="py-5 mx-auto lg:max-w-3xl">
+            {documentToReactComponents(project.description)}
+          </p>
+        </div>
         {githubUrl && (
           <a
             href={githubUrl}
