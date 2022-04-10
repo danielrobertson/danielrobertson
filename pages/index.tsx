@@ -125,8 +125,8 @@ const Home = ({ user, projects, experiences }: Props) => {
 
         <section className="mt-20 text-center text-gray-dark">
           <h2 className="text-6xl">
-            <a id="resume" href="#resume">
-              Resume
+            <a id="experience" href="#experience">
+              Experience
             </a>
           </h2>
 
@@ -148,7 +148,7 @@ const Home = ({ user, projects, experiences }: Props) => {
             href={resumeUrl}
           >
             <p className="font-light underline text-lg underline-offset-1">
-              Downloadable version
+              Download Resume
             </p>
             <ExternalLink
               className="ml-1 mt-.5"
