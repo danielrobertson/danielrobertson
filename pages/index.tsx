@@ -12,15 +12,17 @@ import Footer from "../components/Footer";
 
 import { User } from "../types/User";
 import { Project } from "../types/Project";
+import { Experience } from "../types/Experience";
 
 const NUMBER_OF_PREVIEW_PROJECTS = 6;
 
 type Props = {
   projects: Project[];
   user: User;
+  experiences: Experience[];
 };
 
-const Home = ({ user, projects }: Props) => {
+const Home = ({ user, projects, experiences }: Props) => {
   const {
     image,
     github,
@@ -127,6 +129,20 @@ const Home = ({ user, projects }: Props) => {
               Resume
             </a>
           </h2>
+
+          <div className="mt-8">
+            {experiences.map((experience) => (
+              <div className="mt-5" key={experience.organization}>
+                <div className="text-xl">
+                  {experience.organization}
+                </div>
+                <div className="text-gray-500 text-sm uppercase tracking-tighter">
+                  {experience.role}
+                </div>
+              </div>
+            ))}
+          </div>
+
           <a
             className="flex justify-center p-5 mt-5"
             href={resumeUrl}
@@ -190,20 +206,31 @@ const Home = ({ user, projects }: Props) => {
 };
 
 export async function getStaticProps() {
-  const [userResponse, projectsResponse] = await Promise.all([
-    contentful.getEntry(process.env.USER_ID),
-    contentful.getEntries({ content_type: "project" })
-  ]);
+  const [userResponse, projectsResponse, experiencesResponse] =
+    await Promise.all([
+      contentful.getEntry(process.env.USER_ID),
+      contentful.getEntries({ content_type: "project" }),
+      contentful.getEntries({ content_type: "experience" })
+    ]);
 
   // TODO dynamically auto gen types from Contentful schema
   const projects = projectsResponse.items.map((p) => {
     return { ...p.fields, id: p.sys.id };
   });
 
+  const experiences = experiencesResponse.items.map((p) => {
+    return { ...p.fields, id: p.sys.id };
+  });
+  console.log(
+    "🚀 ~ file: index.tsx ~ line 207 ~ experiences ~ experiences",
+    experiences
+  );
+
   return {
     props: {
       user: userResponse.fields,
-      projects
+      projects,
+      experiences
     }
   };
 }
