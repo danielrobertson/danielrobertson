@@ -4,9 +4,10 @@ import Image from "next/image";
 type Props = {
   headshot: string;
   title: string;
+  name: string;
 };
 
-export default function Header({ headshot, title }: Props) {
+export default function Header({ headshot, title, name }: Props) {
   return (
     <header className="bg-blue-dark pb-8">
       <div className="container relative mx-auto flex flex-col items-center text-gray-lightest">
@@ -20,7 +21,7 @@ export default function Header({ headshot, title }: Props) {
             loading="eager"
           />
         </div>
-        <h1 className="text-4xl lg:text-5xl">Daniel Robertson</h1>
+        <h1 className="text-4xl lg:text-5xl">{name}</h1>
         <div className="mt-3 text-lg font-light text-center lg:text-2xl px-2 lg:py-2">
           {title}
         </div>

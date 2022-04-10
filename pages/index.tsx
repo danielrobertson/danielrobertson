@@ -2,22 +2,24 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import Script from "next/script";
-import PropTypes from "prop-types";
 
 import fetchProjects from "./api/fetchProjects";
 import fetchUser from "./api/fetchUser";
-
-import Twitter from "../components/icons/twitter.svg";
-import Linkedin from "../components/icons/linkedin.svg";
-import Instagram from "../components/icons/instagram.svg";
-import Github from "../components/icons/github.svg";
-import Soundcloud from "../components/icons/soundcloud.svg";
 import UpArrow from "../components/icons/up-arrow.svg";
 import ExternalLink from "../components/icons/external-link.svg";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
+
+import { User } from "../types/User";
 
 const NUMBER_OF_PREVIEW_PROJECTS = 6;
-export default function Home({ user, projects }) {
+
+type Props = {
+  projects: any[];
+  user: User;
+};
+
+const Home = ({ user, projects }: Props) => {
   const {
     image,
     github,
@@ -63,7 +65,7 @@ export default function Home({ user, projects }) {
             "@type": "Person",
             alumniOf: "The University of Texas at Austin",
             jobTitle: "Software engineer",
-            name: "Daniel Robertson",
+            name: name,
             url: "https://www.danielrobertson.me",
             sameAs: [twitter, github, linkedin],
             image: headshot,
@@ -76,7 +78,11 @@ export default function Home({ user, projects }) {
         </Script>
 
         <main id="top">
-          <Header title={title} headshot={headshot}></Header>
+          <Header
+            title={title}
+            headshot={headshot}
+            name={name}
+          ></Header>
 
           <section className="mt-20 text-center text-gray-dark">
             <div className="container mx-auto">
@@ -192,78 +198,11 @@ export default function Home({ user, projects }) {
           </div>
         </main>
 
-        <footer className="mt-auto text-center py-8 text-gray-lightest w-full bg-gray-darker">
-          <div className="flex justify-center pt-3">
-            {[
-              {
-                name: "twitter",
-                icon: (
-                  <Twitter
-                    aria-hidden="true"
-                    height="30"
-                    width="30"
-                  />
-                )
-              },
-              {
-                name: "linkedin",
-                icon: (
-                  <Linkedin
-                    aria-hidden="true"
-                    height="30"
-                    width="30"
-                  />
-                )
-              },
-              {
-                name: "instagram",
-                icon: (
-                  <Instagram
-                    aria-hidden="true"
-                    height="30"
-                    width="30"
-                  />
-                )
-              },
-              {
-                name: "github",
-                icon: (
-                  <Github aria-hidden="true" height="30" width="30" />
-                )
-              },
-              {
-                name: "soundcloud",
-                icon: (
-                  <Soundcloud
-                    aria-hidden="true"
-                    height="30"
-                    width="30"
-                  />
-                )
-              }
-            ].map((social) => (
-              <Link key={social.name} href={user[social.name]}>
-                <a
-                  className="mx-3 fill-white hover:fill-gray-300"
-                  href={user[social.name]}
-                >
-                  {social.icon}
-                  <span className="sr-only">{social.name}</span>
-                </a>
-              </Link>
-            ))}
-          </div>
-          <div className="mt-10 text-sm">
-            Made in Austin <span className="pr-0.5">🌎</span> by
-            <a className="underline pl-1" href={twitter}>
-              danielrobertson
-            </a>
-          </div>
-        </footer>
+        <Footer user={user}></Footer>
       </div>
     </>
   );
-}
+};
 
 export async function getStaticProps() {
   const [userResponse, projectsResponse] = await Promise.all([
@@ -283,22 +222,4 @@ export async function getStaticProps() {
   };
 }
 
-const { array, shape, string } = PropTypes;
-Home.propTypes = {
-  user: shape({
-    name: string,
-    shortBio: string,
-    email: string,
-    twitter: string,
-    github: string,
-    image: shape({
-      fields: shape({
-        file: shape({
-          title: string,
-          url: string
-        })
-      })
-    })
-  }).isRequired,
-  projects: array.isRequired
-};
+export default Home;
