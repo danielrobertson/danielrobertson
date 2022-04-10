@@ -34,9 +34,9 @@ const ProjectPage = ({ project, user }: Props) => {
           </a>
         </Link>
         <main className="text-center text-gray-dark pb-20">
-          <h1 className="text-6xl p-3 mt-10">{name}</h1>
-          <div className="px-5 mt-8">
-            <div className="mx-auto">
+          <h1 className="text-5xl lg:text-6xl p-3 mt-10">{name}</h1>
+          <div className="px-5 mt-8 mx-auto lg:max-w-3xl">
+            <div className="">
               <Image
                 className="w-full rounded-md"
                 src={`https:${project.thumbnail.fields.file.url}`}
@@ -49,7 +49,7 @@ const ProjectPage = ({ project, user }: Props) => {
                 }
               />
             </div>
-            <p className="py-5 mx-auto lg:max-w-3xl">
+            <p className="py-5">
               {/* render Contentful CMS rich text */}
               {documentToReactComponents(project.description)}
             </p>
