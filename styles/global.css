@@ -1,0 +1,11 @@
+/* 
+ * Simple height normalize for all pages. 
+ * Note % preferred over vh due to mobile browser issues with vh units.
+*/
+html,
+body,
+body > div:first-child,
+div#__next,
+div#__next > div {
+  height: 100%;
+}
