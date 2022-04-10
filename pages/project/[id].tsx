@@ -2,19 +2,21 @@ import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-import fetchProject from "../api/fetchProject";
-import fetchUser from "../api/fetchUser";
+import contentful from "../../lib/contentful";
+
 import Header from "../../components/Header";
 import Github from "../../components/icons/github.svg";
+import Footer from "../../components/Footer";
+
+import { User } from "../../types/User";
+import { Project } from "../../types/Project";
 
 type Props = {
-  project: any;
-  user: any;
+  project: Project;
+  user: User;
 };
-
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import Footer from "../../components/Footer";
 
 const ProjectPage = ({ project, user }: Props) => {
   const { githubUrl, liveUrl, name } = project;
@@ -48,6 +50,7 @@ const ProjectPage = ({ project, user }: Props) => {
               />
             </div>
             <p className="py-5 mx-auto lg:max-w-3xl">
+              {/* render Contentful CMS rich text */}
               {documentToReactComponents(project.description)}
             </p>
           </div>
@@ -84,6 +87,7 @@ const ProjectPage = ({ project, user }: Props) => {
   );
 };
 
+// TODO refactor project page to render all pages server-side at build time with getInitialPaths
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
@@ -94,10 +98,11 @@ export const getServerSideProps: GetServerSideProps = async (
 
   try {
     const [userResponse, projectResponse] = await Promise.all([
-      fetchUser(process.env.USER_ID),
-      fetchProject(query.id)
+      contentful.getEntry(process.env.USER_ID),
+      contentful.getEntry(query.id)
     ]);
 
+    // TODO dynamically auto gen types from Contentful schema
     return {
       props: {
         project: projectResponse.fields,
