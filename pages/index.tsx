@@ -131,8 +131,8 @@ const Home = ({ user, projects, experiences }: Props) => {
           </h2>
 
           <div className="mt-8">
-            {experiences.map((experience) => (
-              <div className="mt-5" key={experience.organization}>
+            {experiences.map((experience, idx) => (
+              <div className="" key={experience.organization}>
                 <div className="text-2xl">
                   {experience.organization}
                 </div>
@@ -140,13 +140,16 @@ const Home = ({ user, projects, experiences }: Props) => {
                 <div className="flex justify-center mt-1">
                   {experience.tags?.split(",").map((tag) => (
                     <div
-                      className="mx-1 bg-gray-200 text-gray-600 tracking-wide font-semibold uppercase text-xs py-1 px-2 rounded-md"
+                      className="mx-1 bg-gray-100 text-gray-500 font-semibold text-xs py-0.5 px-2 rounded-full"
                       key={tag}
                     >
                       {tag}
                     </div>
                   ))}
                 </div>
+                {idx !== experiences.length - 1 && (
+                  <div className="text-gray-400 my-3">|</div>
+                )}
               </div>
             ))}
           </div>
@@ -229,10 +232,6 @@ export async function getStaticProps() {
   const experiences = experiencesResponse.items.map((p) => {
     return { ...p.fields, id: p.sys.id };
   });
-  console.log(
-    "🚀 ~ file: index.tsx ~ line 207 ~ experiences ~ experiences",
-    experiences
-  );
 
   return {
     props: {
