@@ -133,18 +133,26 @@ const Home = ({ user, projects, experiences }: Props) => {
           <div className="mt-8">
             {experiences.map((experience) => (
               <div className="mt-5" key={experience.organization}>
-                <div className="text-xl">
+                <div className="text-2xl">
                   {experience.organization}
                 </div>
-                <div className="text-gray-500 text-sm uppercase tracking-tighter">
-                  {experience.role}
+                <div className="text-gray-600">{experience.role}</div>
+                <div className="flex justify-center mt-1">
+                  {experience.tags?.split(",").map((tag) => (
+                    <div
+                      className="mx-1 bg-gray-200 text-gray-600 tracking-wide font-semibold uppercase text-xs py-1 px-2 rounded-md"
+                      key={tag}
+                    >
+                      {tag}
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
           </div>
 
           <a
-            className="flex justify-center p-5 mt-5"
+            className="flex justify-center p-5 mt-7"
             href={resumeUrl}
           >
             <p className="font-light underline text-lg underline-offset-1">

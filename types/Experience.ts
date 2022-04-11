@@ -11,5 +11,6 @@ export type Experience = {
       };
     };
   };
+  tags: string;
   id: string;
 };
