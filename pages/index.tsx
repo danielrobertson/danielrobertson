@@ -138,7 +138,7 @@ const Home = ({ user, projects, experiences }: Props) => {
               >
                 <div className="h-20 w-20">
                   <Image
-                    className="w-full rounded-md"
+                    className="w-full rounded-full"
                     src={`https:${experience.image.fields.file.url}`}
                     alt={`${name} project thumbnail`}
                     width={
@@ -158,7 +158,7 @@ const Home = ({ user, projects, experiences }: Props) => {
                   <div className="text-gray-600">
                     {experience.role}
                   </div>
-                  <div className="flex flex-wrap">
+                  <div className="flex flex-wrap -ml-1">
                     {experience.tags?.split(",").map((tag) => (
                       <div
                         className="mt-1 mx-1 bg-gray-100 text-gray-600 font-semibold text-xs py-0.5 px-2 rounded-full"
