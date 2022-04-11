@@ -138,9 +138,9 @@ const Home = ({ user, projects, experiences }: Props) => {
               >
                 <div className="h-20 w-20">
                   <Image
-                    className="w-full rounded-full"
+                    className="w-full h-full rounded-full"
                     src={`https:${experience.image.fields.file.url}`}
-                    alt={`${name} project thumbnail`}
+                    alt={experience.image.fields.title}
                     width={
                       experience.image.fields.file.details.image.width
                     }
