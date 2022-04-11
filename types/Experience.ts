@@ -8,6 +8,12 @@ export type Experience = {
       title: string;
       file: {
         url: string;
+        details: {
+          image: {
+            width: string; // px
+            height: string;
+          };
+        };
       };
     };
   };

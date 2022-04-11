@@ -123,33 +123,52 @@ const Home = ({ user, projects, experiences }: Props) => {
           </div>
         </section>
 
-        <section className="mt-20 text-center text-gray-dark">
+        <section className="mt-20 text-center text-gray-dark flex flex-col items-center">
           <h2 className="text-6xl">
             <a id="experience" href="#experience">
               Experience
             </a>
           </h2>
 
-          <div className="mt-8">
-            {experiences.map((experience, idx) => (
-              <div className="" key={experience.organization}>
-                <div className="text-2xl">
-                  {experience.organization}
+          <div className="mt-8 text-left">
+            {experiences.map((experience) => (
+              <div
+                className="flex mx-8 mb-8"
+                key={experience.organization}
+              >
+                <div className="h-20 w-20">
+                  <Image
+                    className="w-full rounded-md"
+                    src={`https:${experience.image.fields.file.url}`}
+                    alt={`${name} project thumbnail`}
+                    width={
+                      experience.image.fields.file.details.image.width
+                    }
+                    height={
+                      experience.image.fields.file.details.image
+                        .height
+                    }
+                  />
                 </div>
-                <div className="text-gray-600">{experience.role}</div>
-                <div className="flex justify-center mt-1">
-                  {experience.tags?.split(",").map((tag) => (
-                    <div
-                      className="mx-1 bg-gray-100 text-gray-600 font-semibold text-xs py-0.5 px-2 rounded-full"
-                      key={tag}
-                    >
-                      {tag}
-                    </div>
-                  ))}
+
+                <div className="ml-5">
+                  <div className="text-2xl">
+                    {experience.organization}
+                  </div>
+                  <div className="text-gray-600">
+                    {experience.role}
+                  </div>
+                  <div className="mt-1 flex">
+                    {experience.tags?.split(",").map((tag) => (
+                      <div
+                        className="mx-1 bg-gray-100 text-gray-600 font-semibold text-xs py-0.5 px-2 rounded-full"
+                        key={tag}
+                      >
+                        {tag}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                {idx !== experiences.length - 1 && (
-                  <div className="text-gray-400 my-3">|</div>
-                )}
               </div>
             ))}
           </div>
@@ -183,9 +202,10 @@ const Home = ({ user, projects, experiences }: Props) => {
                 className="underline underline-offset-1"
                 href="https://calendly.com/danielrobertson/coffee-chat"
               >
-                coffee chats ☕️
-              </a>
-              . Connect with me on{" "}
+                coffee chats{" "}
+              </a>{" "}
+              ☕️ <br />
+              Connect with me on{" "}
               <a
                 className="underline underline-offset-1"
                 href={twitter}
