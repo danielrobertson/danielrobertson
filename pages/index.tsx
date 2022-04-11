@@ -158,10 +158,10 @@ const Home = ({ user, projects, experiences }: Props) => {
                   <div className="text-gray-600">
                     {experience.role}
                   </div>
-                  <div className="mt-1 flex">
+                  <div className="flex flex-wrap">
                     {experience.tags?.split(",").map((tag) => (
                       <div
-                        className="mx-1 bg-gray-100 text-gray-600 font-semibold text-xs py-0.5 px-2 rounded-full"
+                        className="mt-1 mx-1 bg-gray-100 text-gray-600 font-semibold text-xs py-0.5 px-2 rounded-full"
                         key={tag}
                       >
                         {tag}
