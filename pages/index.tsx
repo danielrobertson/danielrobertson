@@ -140,7 +140,7 @@ const Home = ({ user, projects, experiences }: Props) => {
                 <div className="flex justify-center mt-1">
                   {experience.tags?.split(",").map((tag) => (
                     <div
-                      className="mx-1 bg-gray-100 text-gray-500 font-semibold text-xs py-0.5 px-2 rounded-full"
+                      className="mx-1 bg-gray-100 text-gray-600 font-semibold text-xs py-0.5 px-2 rounded-full"
                       key={tag}
                     >
                       {tag}
