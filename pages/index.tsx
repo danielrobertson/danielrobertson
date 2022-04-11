@@ -136,7 +136,7 @@ const Home = ({ user, projects, experiences }: Props) => {
                 className="flex mx-8 mb-8"
                 key={experience.organization}
               >
-                <div className="h-20 w-20">
+                <div className="h-20 w-20 flex-shrink-0">
                   <Image
                     className="w-full h-full rounded-full"
                     src={`https:${experience.image.fields.file.url}`}
@@ -161,7 +161,7 @@ const Home = ({ user, projects, experiences }: Props) => {
                   <div className="flex flex-wrap -ml-1">
                     {experience.tags?.split(",").map((tag) => (
                       <div
-                        className="mt-1 mx-1 bg-gray-100 text-gray-600 font-semibold text-xs py-0.5 px-2 rounded-full"
+                        className="mt-1 mx-1 bg-gray-100 text-gray-600 font-semibold text-xs pb-0.5 px-2 rounded-full"
                         key={tag}
                       >
                         {tag}
