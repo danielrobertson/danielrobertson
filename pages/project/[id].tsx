@@ -57,7 +57,7 @@ const ProjectPage = ({ project, user }: Props) => {
           {githubUrl && (
             <a
               href={githubUrl}
-              className="inline-block button p-2 m-3 px-8 bg-black text-gray-lightest rounded-full cursor-pointer"
+              className="inline-block button p-2 m-1 md:m-3 px-8 bg-black text-gray-lightest rounded-full cursor-pointer"
             >
               <Github
                 className="inline mr-1.5 -mt-1 fill-gray-lightest"
@@ -70,7 +70,7 @@ const ProjectPage = ({ project, user }: Props) => {
           {liveUrl && (
             <a
               href={liveUrl}
-              className="inline-block button p-2 m-3 px-8 bg-black text-gray-lightest rounded-full cursor-pointer"
+              className="inline-block button p-2 m-1 md:m-3 px-8 bg-black text-gray-lightest rounded-full cursor-pointer"
             >
               🚀 Visit Site
             </a>
