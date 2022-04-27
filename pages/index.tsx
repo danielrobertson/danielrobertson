@@ -205,21 +205,7 @@ const Home = ({ user, projects, experiences }: Props) => {
                 coffee chats{" "}
               </a>{" "}
               ☕️ <br />
-              Connect with me on{" "}
-              <a
-                className="underline underline-offset-1"
-                href={twitter}
-              >
-                Twitter
-              </a>{" "}
-              or{" "}
-              <a
-                className="underline underline-offset-1"
-                href={linkedin}
-              >
-                LinkedIn
-              </a>
-              !
+              Connect with me using the social media links below!
             </div>
           </div>
         </section>
