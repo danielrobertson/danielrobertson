@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import classnames from "classnames";
 
 import Twitter from "../components/icons/twitter.svg";
 import Linkedin from "../components/icons/linkedin.svg";
@@ -11,37 +12,38 @@ import { User } from "../types/User";
 const SOCIAL_ICONS = [
   {
     name: "twitter",
-    icon: <Twitter aria-hidden="true" height="30" width="30" />
+    icon: <Twitter aria-hidden="true" height="25" width="25" />
   },
   {
     name: "linkedin",
-    icon: <Linkedin aria-hidden="true" height="30" width="30" />
+    icon: <Linkedin aria-hidden="true" height="25" width="25" />
   },
   {
     name: "instagram",
-    icon: <Instagram aria-hidden="true" height="30" width="30" />
+    icon: <Instagram aria-hidden="true" height="25" width="25" />
   },
   {
     name: "github",
-    icon: <Github aria-hidden="true" height="30" width="30" />
+    icon: <Github aria-hidden="true" height="25" width="25" />
   },
   {
     name: "soundcloud",
-    icon: <Soundcloud aria-hidden="true" height="30" width="30" />
+    icon: <Soundcloud aria-hidden="true" height="25" width="25" />
   }
 ];
 
 type Props = {
   user: User;
+  className?: string;
 };
 
-function SocialList({ user }: Props) {
+function SocialList({ user, className }: Props) {
   return (
-    <div className="flex justify-center pt-3">
+    <div className={classnames("flex", className)}>
       {SOCIAL_ICONS.map((social) => (
         <Link key={social.name} href={user[social.name]}>
           <a
-            className="mx-3 fill-gray-lightest hover:fill-gray-300"
+            className="mx-3 first:ml-0 last:mr-0 fill-gray-lightest hover:fill-gray-400"
             href={user[social.name]}
           >
             {social.icon}
