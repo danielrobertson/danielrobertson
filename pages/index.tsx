@@ -69,11 +69,7 @@ const Home = ({ user, projects, experiences }: Props) => {
       </Script>
 
       <main id="top">
-        <Header
-          title={title}
-          headshot={image.fields.file.url}
-          name={name}
-        ></Header>
+        <Header headshot={image.fields.file.url} user={user}></Header>
 
         <section className="mt-20 text-center text-gray-dark">
           <div className="container mx-auto">
@@ -82,7 +78,7 @@ const Home = ({ user, projects, experiences }: Props) => {
                 About
               </a>
             </h2>
-            <p className="mx-auto p-8 whitespace-pre-line font-light text-xl lg:max-w-3xl">
+            <p className="mx-auto p-8 whitespace-pre-line font-light text-2xl lg:max-w-3xl">
               {shortBio}
             </p>
           </div>

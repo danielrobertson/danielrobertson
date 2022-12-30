@@ -1,16 +1,17 @@
 import React from "react";
 import Image from "next/image";
+import SocialList from "./SocialList";
+import { User } from "../types/User";
 
 type Props = {
   headshot: string;
-  title: string;
-  name: string;
+  user: User;
 };
 
-const Header = ({ headshot, title, name }: Props) => (
-  <header className="bg-blue-dark pb-8">
-    <div className="container relative mx-auto flex flex-col items-center text-gray-lightest">
-      <div className="my-8 h-20 w-20 lg:h-52 lg:w-52 relative">
+const Header = ({ headshot, user }: Props) => (
+  <header className="bg-blue-dark py-16 px-8 md:p-24">
+    <div className="container mx-auto flex flex-col md:flex-row justify-center text-gray-lightest">
+      <div className="h-40 w-40 mx-auto md:mx-0 md:h-52 md:w-52 mb-10 md:mb-0 lg:h-64 lg:w-64 relative flex-shrink-0">
         <Image
           className="rounded-full"
           src={`https:${headshot}`}
@@ -20,9 +21,14 @@ const Header = ({ headshot, title, name }: Props) => (
           loading="eager"
         />
       </div>
-      <h1 className="text-4xl lg:text-5xl">{name}</h1>
-      <div className="mt-3 text-lg font-light text-center lg:text-2xl px-2 lg:py-2">
-        {title}
+      <div className="flex flex-col justify-center text-center md:text-left md:ml-10">
+        <h1 className="text-4xl lg:text-6xl font-bold">
+          {user.name}
+        </h1>
+        <div className="text-xl lg:text-3xl font-light">
+          {user.title}
+        </div>
+        <SocialList user={user} className="mt-4 mx-auto md:mx-0" />
       </div>
     </div>
   </header>
