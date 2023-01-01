@@ -14,7 +14,7 @@ import { User } from "../types/User";
 import { Project } from "../types/Project";
 import { Experience } from "../types/Experience";
 
-const NUMBER_OF_PREVIEW_PROJECTS = 6;
+const NUMBER_OF_PREVIEW_PROJECTS = 4;
 
 type Props = {
   projects: Project[];
@@ -68,58 +68,52 @@ const Home = ({ user, projects, experiences }: Props) => {
         })}
       </Script>
 
-      <main id="top">
+      <main id="top" className="text-gray-dark">
         <Header headshot={image.fields.file.url} user={user}></Header>
 
-        <section className="mt-20 text-center text-gray-dark">
+        <section className="mt-20 text-center ">
           <div className="container mx-auto">
-            <h2 className="text-6xl">
-              <a id="about" href="#about">
-                About
-              </a>
-            </h2>
-            <p className="mx-auto p-8 whitespace-pre-line font-light text-2xl lg:max-w-3xl">
+            <h2 className="text-6xl">About</h2>
+            <p className="mx-auto p-8 whitespace-pre-line font-light text-2xl md:max-w-4xl">
               {shortBio}
             </p>
           </div>
         </section>
 
-        <section className="mt-20 p-5 pb-8 text-center text-gray-dark">
-          <div className="container mx-auto">
-            <h2 className="text-6xl">
-              <a className="" id="projects" href="#projects">
-                Projects
-              </a>
-            </h2>
-            <ul className="mt-8 lg:flex lg:justify-center lg:flex-wrap list-none">
-              {projectsToPreview.map(({ name, thumbnail, id }) => (
-                <li
-                  className="mt-10 lg:m-6 lg:max-w-md bg-white hover:opacity-75"
-                  key={name}
-                >
-                  <Link href={`/project/${id}`}>
-                    <a href={`/project/${id}`}>
-                      <Image
-                        className="w-full rounded-md"
-                        src={`https:${thumbnail.fields.file.url}`}
-                        alt={`${name} project thumbnail`}
-                        width={
-                          thumbnail.fields.file.details.image.width
-                        }
-                        height={
-                          thumbnail.fields.file.details.image.height
-                        }
-                      />
-                      <div className="text-2xl py-3">{name}</div>
-                    </a>
-                  </Link>
-                </li>
-              ))}
+        <section className="mt-20 p-5 px-10 pb-8 text-center bg-gray-light">
+          <div className="container mx-auto mt-8">
+            <h2 className="text-6xl">Projects</h2>
+            <ul className="mt-8 mx-auto md:flex md:justify-center md:flex-wrap list-none max-w-4xl">
+              {projectsToPreview.map(
+                ({ name, thumbnail, id, githubUrl }) => (
+                  <li
+                    className="mt-10 lg:m-4 lg:max-w-sm hover:opacity-75"
+                    key={name}
+                  >
+                    <Link href={githubUrl}>
+                      <a href={githubUrl}>
+                        <Image
+                          className="w-full"
+                          src={`https:${thumbnail.fields.file.url}`}
+                          alt={`${name} project thumbnail`}
+                          width={
+                            thumbnail.fields.file.details.image.width
+                          }
+                          height={
+                            thumbnail.fields.file.details.image.height
+                          }
+                        />
+                        <div className="text-3xl py-3">{name}</div>
+                      </a>
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
         </section>
 
-        <section className="mt-20 text-center text-gray-dark flex flex-col items-center">
+        <section className="mt-20 text-center flex flex-col items-center">
           <h2 className="text-6xl">
             <a id="experience" href="#experience">
               Experience
@@ -185,7 +179,7 @@ const Home = ({ user, projects, experiences }: Props) => {
           </a>
         </section>
 
-        <section className="mt-20 text-center text-gray-dark">
+        <section className="mt-20 text-center">
           <div className="container mx-auto">
             <h2 className="text-6xl">
               <a id="contact" href="#contact">

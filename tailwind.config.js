@@ -28,32 +28,15 @@ module.exports = {
       current: "currentColor",
       black: colors.black,
       white: { ...colors.white, DEFAULT: "#FEFFFE" },
-      green: {
-        ...colors.green,
-        DEFAULT: "#00bfa5"
-      },
       gray: {
         ...colors.gray,
-        darker: "#3D3D43",
         dark: "#444444",
-        light: "#bbbbbb",
+        light: "#f2f2f2",
         lightest: "#f3f3f2"
       },
       blue: {
         ...colors.blue,
         dark: "#1B4482"
-      },
-      black: {
-        ...colors.blue,
-        DEFAULT: "#242424"
-      },
-      red: {
-        ...colors.red,
-        DEFAULT: "#F25F5C"
-      },
-      purple: {
-        ...colors.purple,
-        lavender: "#E9EBF8"
       }
     }
   },

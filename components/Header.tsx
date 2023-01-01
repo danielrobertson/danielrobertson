@@ -9,9 +9,9 @@ type Props = {
 };
 
 const Header = ({ headshot, user }: Props) => (
-  <header className="bg-blue-dark py-16 px-8 md:p-24">
+  <header className="bg-blue-dark py-16 px-8 md:p-32">
     <div className="container mx-auto flex flex-col md:flex-row justify-center text-gray-lightest">
-      <div className="h-40 w-40 mx-auto md:mx-0 md:h-52 md:w-52 mb-10 md:mb-0 lg:h-64 lg:w-64 relative flex-shrink-0">
+      <div className="h-40 w-40 mx-auto md:mx-0 md:h-56 md:w-56 mb-10 md:mb-0 lg:h-72 lg:w-72 relative flex-shrink-0">
         <Image
           className="rounded-full"
           src={`https:${headshot}`}
