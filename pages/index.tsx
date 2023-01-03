@@ -74,7 +74,7 @@ const Home = ({ user, projects, experiences }: Props) => {
         <section className="mt-20 text-center ">
           <div className="container mx-auto">
             <h2 className="text-6xl">About</h2>
-            <p className="mx-auto p-8 whitespace-pre-line font-light text-2xl md:max-w-4xl">
+            <p className="mx-auto py-8 px-2 whitespace-pre-line font-light text-2xl md:max-w-4xl">
               {shortBio}
             </p>
           </div>
@@ -154,11 +154,7 @@ const Home = ({ user, projects, experiences }: Props) => {
 
         <section className="mt-20 text-center bg-gray-light">
           <div className="container mx-auto">
-            <h2 className="text-6xl pt-16">
-              <a id="contact" href="#contact">
-                Contact
-              </a>
-            </h2>
+            <h2 className="text-6xl pt-16">Contact</h2>
             <div className="mt-10 px-2 font-light text-2xl">
               I&apos;m open for hire, questions, or{" "}
               <a
