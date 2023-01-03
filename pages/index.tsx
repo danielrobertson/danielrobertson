@@ -127,7 +127,7 @@ const Home = ({ user, projects, experiences }: Props) => {
                   </div>
                   <div className="">{experience.role}</div>
                   <div className="font-medium text-sm">
-                    {experience.tags?.replaceAll(",", " • ")}
+                    {experience.tags.replace(/,/g, " • ")}
                   </div>
                 </div>
                 <div className="absolute border-2 w-4 h-4 -ml-2 border-gray-dark rounded-full"></div>
