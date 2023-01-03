@@ -30,9 +30,10 @@ module.exports = {
       white: { ...colors.white, DEFAULT: "#FEFFFE" },
       gray: {
         ...colors.gray,
-        dark: "#444444",
+        medium: "#b2b2b0",
         light: "#f2f2f2",
-        lightest: "#f3f3f2"
+        lightest: "#f3f3f2",
+        dark: "#444444"
       },
       blue: {
         ...colors.blue,

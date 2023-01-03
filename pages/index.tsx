@@ -113,52 +113,25 @@ const Home = ({ user, projects, experiences }: Props) => {
           </div>
         </section>
 
-        <section className="mt-20 text-center flex flex-col items-center">
-          <h2 className="text-6xl">
-            <a id="experience" href="#experience">
-              Experience
-            </a>
-          </h2>
-
+        <section className="mt-20 text-center flex flex-col items-center text-gray-dark">
+          <h2 className="text-6xl">Experience</h2>
           <div className="mt-8 text-left">
             {experiences.map((experience) => (
               <div
-                className="flex mx-8 mb-8"
+                className="flex mb-10 relative"
                 key={experience.organization}
               >
-                <div className="h-20 w-20 flex-shrink-0">
-                  <Image
-                    className="w-full h-full rounded-full"
-                    src={`https:${experience.image.fields.file.url}`}
-                    alt={experience.image.fields.title}
-                    width={
-                      experience.image.fields.file.details.image.width
-                    }
-                    height={
-                      experience.image.fields.file.details.image
-                        .height
-                    }
-                  />
-                </div>
-
                 <div className="ml-5">
-                  <div className="text-2xl">
+                  <div className="text-2xl font-medium">
                     {experience.organization}
                   </div>
-                  <div className="text-gray-600">
-                    {experience.role}
-                  </div>
-                  <div className="flex flex-wrap -ml-1">
-                    {experience.tags?.split(",").map((tag) => (
-                      <div
-                        className="mt-1 mx-1 bg-gray-100 text-gray-600 font-semibold text-xs pb-0.5 px-2 rounded-full"
-                        key={tag}
-                      >
-                        {tag}
-                      </div>
-                    ))}
+                  <div className="">{experience.role}</div>
+                  <div className="font-medium text-sm">
+                    {experience.tags.replaceAll(",", " • ")}
                   </div>
                 </div>
+                <div className="absolute border-2 w-4 h-4 -ml-2 border-gray-dark rounded-full"></div>
+                <div className="absolute h-[110%] top-[20px] -left-[0.5px] border-l border-gray-medium"></div>
               </div>
             ))}
           </div>
@@ -179,14 +152,14 @@ const Home = ({ user, projects, experiences }: Props) => {
           </a>
         </section>
 
-        <section className="mt-20 text-center">
+        <section className="mt-20 text-center bg-gray-light">
           <div className="container mx-auto">
-            <h2 className="text-6xl">
+            <h2 className="text-6xl pt-16">
               <a id="contact" href="#contact">
                 Contact
               </a>
             </h2>
-            <div className="mt-10 px-2 font-light">
+            <div className="mt-10 px-2 font-light text-2xl">
               I&apos;m open for hire, questions, or{" "}
               <a
                 className="underline underline-offset-1"
@@ -198,13 +171,16 @@ const Home = ({ user, projects, experiences }: Props) => {
               Connect with me using the social media links below!
             </div>
           </div>
+          <div className="mt-20 pb-10 text-center">
+            <a
+              href="#top"
+              className="flex justify-center items-center"
+            >
+              <UpArrow aria-hidden="true" height="20" width="20" />
+              <p className="ml-1 font-light underline">Back to top</p>
+            </a>
+          </div>
         </section>
-        <div className="my-20 text-center">
-          <a href="#top" className="flex justify-center items-center">
-            <UpArrow aria-hidden="true" height="20" width="20" />
-            <p className="ml-2 font-light">Back to Top</p>
-          </a>
-        </div>
       </main>
 
       <Footer user={user}></Footer>
