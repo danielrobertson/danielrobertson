@@ -130,8 +130,8 @@ const Home = ({ user, projects, experiences }: Props) => {
                     {experience.tags.replace(/,/g, " • ")}
                   </div>
                 </div>
-                <div className="absolute border-2 w-4 h-4 -ml-2 border-gray-dark rounded-full"></div>
-                <div className="absolute h-[110%] top-[20px] -left-[0.5px] border-l border-gray-medium"></div>
+                <div className="hidden md:block absolute border-2 w-4 h-4 -ml-2 border-gray-dark rounded-full"></div>
+                <div className="hidden md:block absolute h-[110%] top-[20px] -left-[0.5px] border-l border-gray-medium"></div>
               </div>
             ))}
           </div>
