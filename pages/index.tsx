@@ -91,20 +91,18 @@ const Home = ({ user, projects, experiences }: Props) => {
                     key={name}
                   >
                     <Link href={githubUrl}>
-                      <a href={githubUrl}>
-                        <Image
-                          className="w-full"
-                          src={`https:${thumbnail.fields.file.url}`}
-                          alt={`${name} project thumbnail`}
-                          width={
-                            thumbnail.fields.file.details.image.width
-                          }
-                          height={
-                            thumbnail.fields.file.details.image.height
-                          }
-                        />
-                        <div className="text-3xl py-3">{name}</div>
-                      </a>
+                      <Image
+                        className="w-full"
+                        src={`https:${thumbnail.fields.file.url}`}
+                        alt={`${name} project thumbnail`}
+                        width={Number(
+                          thumbnail.fields.file.details.image.width
+                        )}
+                        height={Number(
+                          thumbnail.fields.file.details.image.height
+                        )}
+                      />
+                      <div className="text-3xl py-3">{name}</div>
                     </Link>
                   </li>
                 )

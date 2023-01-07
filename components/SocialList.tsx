@@ -41,14 +41,13 @@ function SocialList({ user, className }: Props) {
   return (
     <div className={classnames("flex", className)}>
       {SOCIAL_ICONS.map((social) => (
-        <Link key={social.name} href={user[social.name]}>
-          <a
-            className="mx-3 first:ml-0 last:mr-0 fill-gray-lightest hover:fill-gray-400"
-            href={user[social.name]}
-          >
-            {social.icon}
-            <span className="sr-only">{social.name}</span>
-          </a>
+        <Link
+          className="mx-3 first:ml-0 last:mr-0 fill-gray-lightest hover:fill-gray-400"
+          key={social.name}
+          href={user[social.name]}
+        >
+          {social.icon}
+          <span className="sr-only">{social.name}</span>
         </Link>
       ))}
     </div>
