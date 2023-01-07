@@ -92,7 +92,7 @@ const Home = ({ user, projects, experiences }: Props) => {
                   >
                     <Link href={githubUrl}>
                       <Image
-                        className="w-full"
+                        className="w-full drop-shadow-xl"
                         src={`https:${thumbnail.fields.file.url}`}
                         alt={`${name} project thumbnail`}
                         width={Number(
