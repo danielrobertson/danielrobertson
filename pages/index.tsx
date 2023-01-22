@@ -13,6 +13,9 @@ import Footer from "../components/Footer";
 import { User } from "../types/User";
 import { Project } from "../types/Project";
 import { Experience } from "../types/Experience";
+import { useRef } from "react";
+import useIntersectionObserver from "../hooks/useIntersectionObserver";
+import classnames from "classnames";
 
 const NUMBER_OF_PREVIEW_PROJECTS = 4;
 
@@ -38,6 +41,14 @@ const Home = ({ user, projects, experiences }: Props) => {
     0,
     NUMBER_OF_PREVIEW_PROJECTS
   );
+
+  const experienceRef = useRef();
+  const experienceIntersectionObserver = useIntersectionObserver(
+    experienceRef,
+    {}
+  );
+  const isExperienceVisible =
+    !!experienceIntersectionObserver?.isIntersecting;
 
   return (
     <div className="flex flex-col min-h-full">
@@ -113,24 +124,45 @@ const Home = ({ user, projects, experiences }: Props) => {
 
         <section className="mt-20 text-center flex flex-col items-center text-gray-dark">
           <h2 className="text-6xl">Experience</h2>
-          <div className="mt-8 text-left">
-            {experiences.map((experience) => (
-              <div
-                className="flex mb-10 relative"
-                key={experience.organization}
-              >
-                <div className="ml-5">
-                  <div className="text-2xl font-medium">
-                    {experience.organization}
+          <div
+            ref={experienceRef}
+            className={classnames("mt-8 text-left")}
+          >
+            {experiences.map((experience, idx) => (
+              <>
+                <style jsx>
+                  {`
+                    .experience-delay {
+                      transition-delay: ${idx * 150}ms;
+                    }
+                  `}
+                </style>
+                <div
+                  className={classnames(
+                    `flex mb-10 relative duration-700 experience-delay`,
+                    {
+                      "transition-none opacity-0":
+                        !isExperienceVisible
+                    },
+                    {
+                      "opacity-100 transition": isExperienceVisible
+                    }
+                  )}
+                  key={experience.organization}
+                >
+                  <div className="ml-5">
+                    <div className="text-2xl font-medium">
+                      {experience.organization}
+                    </div>
+                    <div className="">{experience.role}</div>
+                    <div className="font-medium text-sm">
+                      {experience.tags.replace(/,/g, " • ")}
+                    </div>
                   </div>
-                  <div className="">{experience.role}</div>
-                  <div className="font-medium text-sm">
-                    {experience.tags.replace(/,/g, " • ")}
-                  </div>
+                  <div className="hidden md:block absolute border-2 w-4 h-4 -ml-2 border-gray-dark rounded-full"></div>
+                  <div className="hidden md:block absolute h-[110%] top-[20px] -left-[0.5px] border-l border-gray-medium"></div>
                 </div>
-                <div className="hidden md:block absolute border-2 w-4 h-4 -ml-2 border-gray-dark rounded-full"></div>
-                <div className="hidden md:block absolute h-[110%] top-[20px] -left-[0.5px] border-l border-gray-medium"></div>
-              </div>
+              </>
             ))}
           </div>
 
