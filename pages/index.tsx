@@ -14,7 +14,6 @@ import { User } from "../types/User";
 import { Project } from "../types/Project";
 import { Experience } from "../types/Experience";
 import { useRef } from "react";
-import useIntersectionObserver from "../hooks/useIntersectionObserver";
 import classnames from "classnames";
 import useIsVisible from "../hooks/useIsVisible";
 
@@ -91,6 +90,7 @@ const Home = ({ user, projects, experiences }: Props) => {
           <div className="container mx-auto mt-8">
             <h2 className="text-6xl">Projects</h2>
             <ul
+              // @ts-ignore
               ref={projectsRef}
               className="mt-8 mx-auto md:flex md:justify-center md:flex-wrap list-none max-w-4xl"
             >
@@ -141,6 +141,7 @@ const Home = ({ user, projects, experiences }: Props) => {
 
         <section className="mt-20 text-center flex flex-col items-center text-gray-dark">
           <h2 className="text-6xl">Experience</h2>
+          {/* @ts-ignore */}
           <div ref={experienceRef} className="mt-8 text-left">
             {experiences.map((experience, idx) => (
               <>
