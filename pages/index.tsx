@@ -16,6 +16,7 @@ import { Experience } from "../types/Experience";
 import { useRef } from "react";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
 import classnames from "classnames";
+import useIsVisible from "../hooks/useIsVisible";
 
 const NUMBER_OF_PREVIEW_PROJECTS = 4;
 
@@ -42,13 +43,8 @@ const Home = ({ user, projects, experiences }: Props) => {
     NUMBER_OF_PREVIEW_PROJECTS
   );
 
-  const experienceRef = useRef();
-  const experienceIntersectionObserver = useIntersectionObserver(
-    experienceRef,
-    {}
-  );
-  const isExperienceVisible =
-    !!experienceIntersectionObserver?.isIntersecting;
+  const [experienceRef, isExperienceVisible] = useIsVisible();
+  const [projectsRef, isProjectsVisible] = useIsVisible();
 
   return (
     <div className="flex flex-col min-h-full">
@@ -94,28 +90,49 @@ const Home = ({ user, projects, experiences }: Props) => {
         <section className="mt-20 p-5 px-10 pb-8 text-center bg-gray-light">
           <div className="container mx-auto mt-8">
             <h2 className="text-6xl">Projects</h2>
-            <ul className="mt-8 mx-auto md:flex md:justify-center md:flex-wrap list-none max-w-4xl">
+            <ul
+              ref={projectsRef}
+              className="mt-8 mx-auto md:flex md:justify-center md:flex-wrap list-none max-w-4xl"
+            >
               {projectsToPreview.map(
-                ({ name, thumbnail, id, githubUrl }) => (
-                  <li
-                    className="mt-10 lg:m-4 lg:max-w-sm hover:opacity-75"
-                    key={name}
-                  >
-                    <Link href={githubUrl}>
-                      <Image
-                        className="w-full drop-shadow-xl rounded-lg"
-                        src={`https:${thumbnail.fields.file.url}`}
-                        alt={`${name} project thumbnail`}
-                        width={Number(
-                          thumbnail.fields.file.details.image.width
-                        )}
-                        height={Number(
-                          thumbnail.fields.file.details.image.height
-                        )}
-                      />
-                      <div className="text-3xl py-3">{name}</div>
-                    </Link>
-                  </li>
+                ({ name, thumbnail, id, githubUrl }, idx) => (
+                  <>
+                    <style jsx>
+                      {`
+                        .projects-delay {
+                          transition-delay: ${idx * 150}ms;
+                        }
+                      `}
+                    </style>
+                    <li
+                      className={classnames(
+                        "mt-10 lg:m-4 lg:max-w-sm hover:opacity-75 duration-700 projects-delay",
+                        {
+                          "transition-none opacity-0":
+                            !isProjectsVisible
+                        },
+                        {
+                          "opacity-100 transition": isProjectsVisible
+                        }
+                      )}
+                      key={name}
+                    >
+                      <Link href={githubUrl}>
+                        <Image
+                          className="w-full drop-shadow-xl rounded-lg"
+                          src={`https:${thumbnail.fields.file.url}`}
+                          alt={`${name} project thumbnail`}
+                          width={Number(
+                            thumbnail.fields.file.details.image.width
+                          )}
+                          height={Number(
+                            thumbnail.fields.file.details.image.height
+                          )}
+                        />
+                        <div className="text-3xl py-3">{name}</div>
+                      </Link>
+                    </li>
+                  </>
                 )
               )}
             </ul>
@@ -124,10 +141,7 @@ const Home = ({ user, projects, experiences }: Props) => {
 
         <section className="mt-20 text-center flex flex-col items-center text-gray-dark">
           <h2 className="text-6xl">Experience</h2>
-          <div
-            ref={experienceRef}
-            className={classnames("mt-8 text-left")}
-          >
+          <div ref={experienceRef} className="mt-8 text-left">
             {experiences.map((experience, idx) => (
               <>
                 <style jsx>
