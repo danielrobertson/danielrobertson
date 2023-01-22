@@ -141,11 +141,12 @@ const Home = ({ user, projects, experiences }: Props) => {
                   className={classnames(
                     `flex mb-10 relative duration-700 experience-delay`,
                     {
-                      "transition-none opacity-0":
+                      "transition-none opacity-0 -translate-x-full":
                         !isExperienceVisible
                     },
                     {
-                      "opacity-100 transition": isExperienceVisible
+                      "opacity-100 transition translate-x-0":
+                        isExperienceVisible
                     }
                   )}
                   key={experience.organization}
