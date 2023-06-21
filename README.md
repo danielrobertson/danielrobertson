@@ -5,7 +5,7 @@
 ![Twitter Follow](https://img.shields.io/twitter/follow/danielson7_?style=social)
 
 My name is Daniel and I'm a senior full-stack software engineer focused on building seamless user
-and developer experiences. I'm from Austin and currently working on
+and developer experiences. I'm from Austin and currently a technical maintainer of
 [Manifest Design System](https://project44.github.io/manifest/).
 
 ## 💼 Skills
