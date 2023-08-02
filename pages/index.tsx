@@ -187,7 +187,7 @@ const Home = ({ user, projects, experiences }: Props) => {
             href={resumeUrl}
           >
             <p className="font-light underline text-lg underline-offset-1">
-              Download Resume
+              Resume
             </p>
             <ExternalLink
               className="ml-1 mt-.5"
