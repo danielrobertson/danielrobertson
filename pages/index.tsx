@@ -117,7 +117,11 @@ const Home = ({ user, projects, experiences }: Props) => {
                       )}
                       key={name}
                     >
-                      <Link href={githubUrl}>
+                      <Link
+                        href={githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Image
                           className="w-full drop-shadow-xl rounded-lg"
                           src={`https:${thumbnail.fields.file.url}`}
@@ -185,6 +189,8 @@ const Home = ({ user, projects, experiences }: Props) => {
           <a
             className="flex justify-center p-5 mt-7"
             href={resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <p className="font-light underline text-lg underline-offset-1">
               Resume
@@ -206,6 +212,8 @@ const Home = ({ user, projects, experiences }: Props) => {
               <a
                 className="underline underline-offset-1"
                 href="https://calendly.com/danielrobertson/coffee-chat"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 coffee chats{" "}
               </a>{" "}

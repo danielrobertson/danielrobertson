@@ -45,6 +45,8 @@ function SocialList({ user, className }: Props) {
           className="mx-3 first:ml-0 last:mr-0 fill-gray-lightest hover:fill-gray-400"
           key={social.name}
           href={user[social.name]}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           {social.icon}
           <span className="sr-only">{social.name}</span>
