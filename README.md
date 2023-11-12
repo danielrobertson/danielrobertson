@@ -4,13 +4,13 @@
 ![GitHub stars](https://img.shields.io/github/stars/danielrobertson?label=Stars&style=social)
 ![Twitter Follow](https://img.shields.io/twitter/follow/danielson7_?style=social)
 
-My name is Daniel and I'm a senior full-stack software engineer focused on building seamless user
-and developer experiences. I'm from Austin and currently a technical maintainer of
+My name is Daniel, and I'm a senior full-stack software engineer focused on building seamless user
+and developer experiences. I'm from Austin and currently work at Cloudflare on the customer dashboard. Previously I worked on
 [Manifest Design System](https://project44.github.io/manifest/).
 
 ## 💼 Skills
 
-In my 8+ years of professional work experience, I've worked with a variety of technologies. However,
+I've worked with various technologies in my 8+ years of professional work experience. However,
 the ones listed below are the ones that I consider myself particularly experienced in.
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -28,7 +28,7 @@ the ones listed below are the ones that I consider myself particularly experienc
 ## 📚 Side projects
 
 When I'm not coding for work, I like to experiment with new technologies to learn and scratch my own
-itch. Here's a couple of my own toy projects that I've built and/or currently working on:
+itch. Here's a couple of my own toy projects that I've built and/or am currently working on:
 
 - **[Leafly chatbot](https://github.com/danielrobertson/leafly-bot)**: I integrated Leafly's API
   with Facebook Messenger SDK to create a chatbot that can answer questions about cannabis strains
