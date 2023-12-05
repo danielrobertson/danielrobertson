@@ -1,10 +1,35 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import {
+  contentfulClient,
+  type Person,
+  type Project,
+  type Experience,
+} from "../lib/contentful";
+
+const [userResponse, projectsResponse, experiencesResponse] = await Promise.all(
+  [
+    contentfulClient.getEntries<Person>({
+      content_type: "person",
+    }),
+    contentfulClient.getEntries<Project>({
+      content_type: "project",
+    }),
+    contentfulClient.getEntries<Experience>({
+      content_type: "experience",
+    }),
+  ]
+);
+
+const person = userResponse.items[0].fields;
+const projects = projectsResponse.items.map((item) => item.fields);
+const experiences = experiencesResponse.items.map((item) => item.fields);
+
+const pageTitle = person.name;
 ---
 
-<Layout title="Daniel Robertson">
+<Layout title={pageTitle}>
   <main>
-    <h1 class="text-3xl font-bold underline">Daniel Robertson</h1>
+    <h1 class="text-3xl font-bold underline">name: {person.name}</h1>
   </main>
 </Layout>
