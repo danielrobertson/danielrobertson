@@ -1,11 +1,14 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+
 import {
   contentfulClient,
   type Person,
   type Project,
   type Experience,
 } from "../lib/contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
 const [userResponse, projectsResponse, experiencesResponse] = await Promise.all(
   [
@@ -18,18 +21,37 @@ const [userResponse, projectsResponse, experiencesResponse] = await Promise.all(
     contentfulClient.getEntries<Experience>({
       content_type: "experience",
     }),
-  ]
+  ],
 );
 
 const person = userResponse.items[0].fields;
+console.log("🚀 ~ file: index.astro:27 ~ person:", person.image);
 const projects = projectsResponse.items.map((item) => item.fields);
 const experiences = experiencesResponse.items.map((item) => item.fields);
-
-const pageTitle = person.name;
 ---
 
-<Layout title={pageTitle}>
-  <main>
-    <h1 class="text-3xl font-bold underline">name: {person.name}</h1>
+<Layout title={person.name}>
+  <main id="top" class="container mx-auto">
+    <section
+      class="flex flex-col md:flex-row justify-around items-center gap-5 p-3 md:p-8 text-2xl"
+    >
+      <div class="">
+        <h1>
+          Hey 👋 I'm
+          <span
+            class="block text-4xl md:text-5xl lg:text-6xl font-bold name-gradient"
+            >{person.name}
+          </span>
+        </h1>
+        <p class="max-w-lg">{person.shortBio}</p>
+      </div>
+      <Image
+        class="rounded-3xl shadow-2xl w-72 lg:w-96"
+        src={person.image.fields.file.url}
+        alt={person.name}
+        height={556}
+        width={417}
+      />
+    </section>
   </main>
 </Layout>
