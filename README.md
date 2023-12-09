@@ -1,54 +1,56 @@
-# Astro Starter Kit: Basics
+# Hi there, welcome to my GitHub! 👋
 
-```sh
-npm create astro@latest -- --template basics
-```
+![GitHub followers](https://img.shields.io/github/followers/danielrobertson?label=Followers&style=social)
+![GitHub stars](https://img.shields.io/github/stars/danielrobertson?label=Stars&style=social)
+![Twitter Follow](https://img.shields.io/twitter/follow/danielson7_?style=social)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+My name is Daniel, and I'm a senior full-stack software engineer focused on building seamless user
+and developer experiences. I'm from Austin and currently work at Cloudflare on the customer dashboard. Previously I worked on
+[Manifest Design System](https://project44.github.io/manifest/).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 💼 Skills
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+I've worked with various technologies in my 8+ years of professional work experience. However,
+the ones listed below are the ones that I consider myself particularly experienced in.
 
-## 🚀 Project Structure
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=oracle&logoColor=white)
 
-Inside of your Astro project, you'll see the following folders and files:
+## 👨‍💻 Open-source work
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- **[Manifest Design System](https://project44.github.io/manifest/)**: Project44's design system,
+  built with React, TypeScript, Turborepo, StitchesCSS, and documented with Docusaurus.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 📚 Side projects
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+When I'm not coding for work, I like to experiment with new technologies to learn and scratch my own
+itch. Here's a couple of my own toy projects that I've built and/or am currently working on:
 
-Any static assets, like images, can be placed in the `public/` directory.
+- **[Leafly chatbot](https://github.com/danielrobertson/leafly-bot)**: I integrated Leafly's API
+  with Facebook Messenger SDK to create a chatbot that can answer questions about cannabis strains
+  and interact with the user's Leafly account.
 
-## 🧞 Commands
+- **[Personal website](https://github.com/danielrobertson/danielrobertson)**: My personal website
+  built with Next.js, TypeScript, TailwindCSS, and Contentful CMS. I'm still deciding how I want to
+  position myself as a developer and musician, so it's still a work in progress.
 
-All commands are run from the root of the project, from a terminal:
+- **[Taggle](https://github.com/danielrobertson/taggle)**: To help me learn Korean, I build a thin
+  wrapper around Google search that maintains customizable search prefixes using Next.js and
+  localStorage
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- **[Wordle Race](https://github.com/danielrobertson/wordle-race)**: Wordle game room where the
+  fastest to solve the puzzle wins
 
-## 👀 Want to learn more?
+- **[Relevant Xkcd](https://github.com/danielrobertson/relevant-xkcd)**: Elastic search engine for
+  xkcd comics
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
+
+## 📬 Get in touch
+
+- Twitter: [twitter.com/danielson7\_](https://twitter.com/danielson7_)
+- LinkedIn: [linkedin.com/in/danielrobertson4](https://www.linkedin.com/in/danielrobertson4/)
