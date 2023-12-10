@@ -30,6 +30,9 @@ const person = userResponse.items[0].fields;
 console.log("🚀 ~ file: index.astro:27 ~ person:", person.image);
 const projects = projectsResponse.items.map((item) => item.fields);
 const experiences = experiencesResponse.items.map((item) => item.fields);
+
+// @ts-ignore
+const imageUrl = person?.image.fields.file.url;
 ---
 
 <Layout title={person.name}>
@@ -50,7 +53,7 @@ const experiences = experiencesResponse.items.map((item) => item.fields);
       </div>
       <Image
         class="rounded-3xl shadow-2xl w-72 lg:w-96"
-        src={person.image.fields.file.url}
+        src={imageUrl}
         alt={person.name}
         height={556}
         width={417}
