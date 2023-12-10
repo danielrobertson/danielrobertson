@@ -25,25 +25,19 @@ the ones listed below are the ones that I consider myself particularly experienc
 - **[Manifest Design System](https://project44.github.io/manifest/)**: Project44's design system,
   built with React, TypeScript, Turborepo, StitchesCSS, and documented with Docusaurus.
 
-## 📚 Side projects
-
-When I'm not coding for work, I like to experiment with new technologies to learn and scratch my own
-itch. Here's a couple of my own toy projects that I've built and/or am currently working on:
+## 📚 Projects
 
 - **[Leafly chatbot](https://github.com/danielrobertson/leafly-bot)**: I integrated Leafly's API
   with Facebook Messenger SDK to create a chatbot that can answer questions about cannabis strains
   and interact with the user's Leafly account.
 
-- **[Personal website](https://github.com/danielrobertson/danielrobertson)**: My personal website
+- **[Portfolio site](https://github.com/danielrobertson/danielrobertson)**: My personal website
   built with Next.js, TypeScript, TailwindCSS, and Contentful CMS. I'm still deciding how I want to
   position myself as a developer and musician, so it's still a work in progress.
 
 - **[Taggle](https://github.com/danielrobertson/taggle)**: To help me learn Korean, I build a thin
   wrapper around Google search that maintains customizable search prefixes using Next.js and
   localStorage
-
-- **[Wordle Race](https://github.com/danielrobertson/wordle-race)**: Wordle game room where the
-  fastest to solve the puzzle wins
 
 - **[Relevant Xkcd](https://github.com/danielrobertson/relevant-xkcd)**: Elastic search engine for
   xkcd comics
