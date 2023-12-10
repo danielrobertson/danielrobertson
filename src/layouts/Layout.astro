@@ -1,22 +1,26 @@
 ---
 import "@fontsource-variable/outfit";
 
-interface Props {
-  title: string;
-}
-
-const { title } = Astro.props;
+const { person } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta
+      name="description"
+      content="Daniel Robertson, full-stack software engineer and musician from Austin, Texas"
+    />
+    <meta
+      name="keywords"
+      content="software engineer, web developer, javascript, musician, Daniel Robertson"
+    />
+    <meta name="author" content={person.name} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{person.name} | Software Engineer and Musician</title>
   </head>
   <body
     class="container mx-auto text-zinc-900 dark:text-zinc-100 bg-gray-100 dark:bg-zinc-900 antialiased"
