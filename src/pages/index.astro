@@ -9,6 +9,7 @@ import {
   type Experience,
 } from "../lib/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import ThemeToggle from "../components/ThemeToggle.astro";
 
 const [userResponse, projectsResponse, experiencesResponse] = await Promise.all(
   [
@@ -23,6 +24,7 @@ const [userResponse, projectsResponse, experiencesResponse] = await Promise.all(
     }),
   ],
 );
+1;
 
 const person = userResponse.items[0].fields;
 console.log("🚀 ~ file: index.astro:27 ~ person:", person.image);
@@ -31,7 +33,8 @@ const experiences = experiencesResponse.items.map((item) => item.fields);
 ---
 
 <Layout title={person.name}>
-  <main id="top" class="container mx-auto">
+  <header class="flex flex-row-reverse"><ThemeToggle /></header>
+  <main id="top" class="">
     <section
       class="flex flex-col md:flex-row justify-around items-center gap-5 p-3 md:p-8 text-2xl"
     >

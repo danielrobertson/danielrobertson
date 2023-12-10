@@ -18,7 +18,9 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="text-zinc-900">
+  <body
+    class="container mx-auto text-zinc-900 dark:text-zinc-100 bg-gray-100 dark:bg-zinc-900 antialiased"
+  >
     <slot />
   </body>
 </html>
@@ -26,10 +28,7 @@ const { title } = Astro.props;
   :root {
   }
   html {
-    background-color: #f9f9f9;
     font-family: "Outfit Variable", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
