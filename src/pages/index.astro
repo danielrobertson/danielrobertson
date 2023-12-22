@@ -56,6 +56,11 @@ const imageUrl = person?.image.fields.file.url;
             </span>
           </h1>
           <p class="max-w-lg pr-2">{person.shortBio}</p>
+          <a
+            class="inline-block mt-3 text-base underline"
+            href="/resume.pdf"
+            target="_blank">View my resume</a
+          >
           <Socials person={person} />
         </div>
         <Image
