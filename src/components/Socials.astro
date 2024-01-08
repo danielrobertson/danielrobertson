@@ -1,7 +1,6 @@
 ---
 const { person } = Astro.props;
 const { github, linkedin, twitter } = person;
-console.log("🚀 ~ file: Socials.astro:4 ~ twitter:", twitter);
 ---
 
 <ul class="flex gap-5 mt-10">
@@ -14,7 +13,7 @@ console.log("🚀 ~ file: Socials.astro:4 ~ twitter:", twitter);
       class="hover:text-purple-300"
     >
       <svg
-        class="w-6 h-6 text-zinc-900 dark:text-zinc-100"
+        class="w-6 h-6 text-zinc-900 hover:text-zinc-600 dark:text-zinc-100 dark:hover:text-zinc-300"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -35,7 +34,7 @@ console.log("🚀 ~ file: Socials.astro:4 ~ twitter:", twitter);
       rel="noopener noreferrer"
     >
       <svg
-        class="w-6 h-6 text-zinc-900 dark:text-zinc-100"
+        class="w-6 h-6 text-zinc-900 hover:text-zinc-600 dark:text-zinc-100 dark:hover:text-zinc-300"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
@@ -56,7 +55,7 @@ console.log("🚀 ~ file: Socials.astro:4 ~ twitter:", twitter);
       rel="noopener noreferrer"
     >
       <svg
-        class="w-6 h-6 text-zinc-900 dark:text-zinc-100 -mt-0.5"
+        class="w-6 h-6 text-zinc-900 hover:text-zinc-600 dark:text-zinc-100 dark:hover:text-zinc-300 -mt-0.5"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
