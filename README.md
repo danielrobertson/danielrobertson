@@ -25,7 +25,8 @@ the ones listed below are the ones that I consider myself particularly experienc
 - **[Manifest Design System](https://project44.github.io/manifest/)**: Project44's design system,
   built with React, TypeScript, Turborepo, StitchesCSS, and documented with Docusaurus.
 
-## 📚 Projects
+## 📚 Side Projects
+While most of my code in private company repositories, I use side projects as a way to learn new technologies and scratch my own itch
 
 - **[Leafly chatbot](https://github.com/danielrobertson/leafly-bot)**: I integrated Leafly's API
   with Facebook Messenger SDK to create a chatbot that can answer questions about cannabis strains
