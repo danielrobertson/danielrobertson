@@ -10,8 +10,7 @@ and developer experiences. I'm from Austin and currently work at Cloudflare on t
 
 ## 💼 Skills
 
-I've worked with various technologies in my 8+ years of professional work experience. However,
-the ones listed below are the ones that I consider myself particularly experienced in.
+While I've worked with a wide variety of technologies in my 9+ years of professional work experience, these are my favorite: 
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
