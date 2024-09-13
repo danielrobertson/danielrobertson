@@ -23,7 +23,7 @@ const [userResponse, projectsResponse, experiencesResponse] = await Promise.all(
     contentfulClient.getEntries<Experience>({
       content_type: "experience",
     }),
-  ],
+  ]
 );
 1;
 
@@ -58,7 +58,7 @@ const imageUrl = person?.image.fields.file.url;
           <p class="text-lg max-w-md pr-2">{person.shortBio}</p>
           <a
             class="mt-3 text-base flex w-fit items-center hover:text-purple-600"
-            href="/resume.pdf"
+            href="/Resume.pdf"
             target="_blank"
             >View my resume <svg
               xmlns="http://www.w3.org/2000/svg"
