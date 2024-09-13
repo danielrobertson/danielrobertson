@@ -10,8 +10,7 @@ and developer experiences. I'm from Austin and currently work at Cloudflare on t
 
 ## 💼 Skills
 
-I've worked with various technologies in my 8+ years of professional work experience. However,
-the ones listed below are the ones that I consider myself particularly experienced in.
+While I've worked with a wide variety of technologies in my 9+ years of professional work experience, these are my favorite: 
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -25,7 +24,8 @@ the ones listed below are the ones that I consider myself particularly experienc
 - **[Manifest Design System](https://project44.github.io/manifest/)**: Project44's design system,
   built with React, TypeScript, Turborepo, StitchesCSS, and documented with Docusaurus.
 
-## 📚 Projects
+## 📚 Side Projects
+While most of my code in private company repositories, I use side projects as a way to learn new technologies and scratch my own itch
 
 - **[Leafly chatbot](https://github.com/danielrobertson/leafly-bot)**: I integrated Leafly's API
   with Facebook Messenger SDK to create a chatbot that can answer questions about cannabis strains
