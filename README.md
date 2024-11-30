@@ -25,7 +25,9 @@ While I've worked with a wide variety of technologies in my 9+ years of professi
   built with React, TypeScript, Turborepo, StitchesCSS, and documented with Docusaurus.
 
 ## 📚 Side Projects
-While most of my code in private company repositories, I use side projects as a way to learn new technologies and scratch my own itch
+While most of my code in private company repositories, I use side projects as a way to learn explore technologies and scratch my own itches
+
+- **[ShareReads](https://github.com/danielrobertson/share-reads)**: Quickly create and share book lists to friends. Built using Remix.js, Google Books API, and Cloudflare Pages and Workers KV 🚀 Live at https://share-reads.pages.dev
 
 - **[Leafly chatbot](https://github.com/danielrobertson/leafly-bot)**: I integrated Leafly's API
   with Facebook Messenger SDK to create a chatbot that can answer questions about cannabis strains
