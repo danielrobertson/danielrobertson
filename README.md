@@ -4,13 +4,13 @@
 ![GitHub stars](https://img.shields.io/github/stars/danielrobertson?label=Stars&style=social)
 ![Twitter Follow](https://img.shields.io/twitter/follow/danielson7_?style=social)
 
-My name is Daniel, and I'm a senior full-stack software engineer focused on building seamless user
+My name is Daniel, and I'm a product software engineer engineer focused on building seamless user
 and developer experiences. I'm from Austin and currently work at Cloudflare on the customer dashboard. Previously I worked on
 [Manifest Design System](https://project44.github.io/manifest/).
 
 ## 💼 Skills
 
-While I've worked with a wide variety of technologies in my 9+ years of professional work experience, these are my favorite: 
+While I've worked with a wide variety of technologies in my 9+ years of professional work experience, these are my common tools: 
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -29,13 +29,13 @@ While most of my code in private company repositories, I use side projects as a 
 
 - **[ShareReads](https://github.com/danielrobertson/share-reads)**: Quickly create and share book lists to friends. Built using Remix.js, Google Books API, and Cloudflare Pages and Workers KV 🚀 Live at https://sharereads.xyz
 
-- **[Leafly chatbot](https://github.com/danielrobertson/leafly-bot)**: I integrated Leafly's API
-  with Facebook Messenger SDK to create a chatbot that can answer questions about cannabis strains
-  and interact with the user's Leafly account.
-
 - **[Portfolio site](https://github.com/danielrobertson/danielrobertson)**: My personal website
   built with Next.js, TypeScript, TailwindCSS, and Contentful CMS. I'm still deciding how I want to
   position myself as a developer and musician, so it's still a work in progress.
+
+- **[Leafly chatbot](https://github.com/danielrobertson/leafly-bot)**: I integrated Leafly's API
+  with Facebook Messenger SDK to create a chatbot that can answer questions about cannabis strains
+  and interact with the user's Leafly account.
 
 - **[Taggle](https://github.com/danielrobertson/taggle)**: To help me learn Korean, I build a thin
   wrapper around Google search that maintains customizable search prefixes using Next.js and
