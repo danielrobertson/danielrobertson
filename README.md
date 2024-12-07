@@ -27,7 +27,8 @@ While I've worked with a wide variety of technologies in my 9+ years of professi
 ## 📚 Side Projects
 While most of my code in private company repositories, I use side projects as a way to learn explore technologies and scratch my own itches
 
-- **[ShareReads](https://github.com/danielrobertson/share-reads)**: Quickly create and share book lists to friends. Built using Remix.js, Google Books API, and Cloudflare Pages and Workers KV 🚀 Live at https://sharereads.xyz
+- **[ShareReads](https://github.com/danielrobertson/share-reads)**: Quickly create and share book lists to friends. Built using Remix.js, Google Books API, and Cloudflare Pages and Workers KV
+  - 🚀 Live at https://sharereads.xyz
 
 - **[Portfolio site](https://github.com/danielrobertson/danielrobertson)**: My personal website
   built with Next.js, TypeScript, TailwindCSS, and Contentful CMS. I'm still deciding how I want to
