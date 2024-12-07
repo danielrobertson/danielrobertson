@@ -22,7 +22,7 @@ While I've worked with a wide variety of technologies in my 9+ years of professi
 ## 👨‍💻 Open-source work
 
 - **[Manifest Design System](https://project44.github.io/manifest/)**: Project44's design system,
-  built with React, TypeScript, Turborepo, StitchesCSS, and documented with Docusaurus.
+  built with React, TypeScript, Turborepo, StitchesCSS, and documented with Docusaurus. In 2023 I worked interanlly at Project44 helping build, evangelize, and adopt Manifest Design System 
 
 ## 📚 Side Projects
 While most of my code in private company repositories, I use side projects as a way to learn explore technologies and scratch my own itches
