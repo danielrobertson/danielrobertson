@@ -31,8 +31,8 @@ While most of my code in private company repositories, I use side projects as a 
   - 🚀 Live at https://sharereads.xyz
 
 - **[Portfolio site](https://github.com/danielrobertson/danielrobertson)**: My personal website
-  built with Next.js, TypeScript, TailwindCSS, and Contentful CMS. I'm still deciding how I want to
-  position myself as a developer and musician, so it's still a work in progress.
+  built with Astro, TypeScript, TailwindCSS, and Contentful CMS
+  - 🚀 Live at https://danielrobertson.dev
 
 - **[Leafly chatbot](https://github.com/danielrobertson/leafly-bot)**: I integrated Leafly's API
   with Facebook Messenger SDK to create a chatbot that can answer questions about cannabis strains
