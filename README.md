@@ -37,10 +37,15 @@ While most of my code in private company repositories, I use side projects as a 
 - **[Leafly chatbot](https://github.com/danielrobertson/leafly-bot)**: I integrated Leafly's API
   with Facebook Messenger SDK to create a chatbot that can answer questions about cannabis strains
   and interact with the user's Leafly account.
+  - Demo'd for company hackthon, won "Most Creative" hackathon award 
+
+- **[World Race](wordle-race)** Live rounds of Wordle with opponent, currently in development and unfinished
+  - 🚀 Work in progress at https://www.wordlerace.fun 
 
 - **[Taggle](https://github.com/danielrobertson/taggle)**: To help me learn Korean, I build a thin
   wrapper around Google search that maintains customizable search prefixes using Next.js and
   localStorage
+  - 🚀 Live at https://www.tagglesearch.app/
 
 - **[Relevant Xkcd](https://github.com/danielrobertson/relevant-xkcd)**: Elastic search engine for
   xkcd comics
@@ -49,5 +54,5 @@ While most of my code in private company repositories, I use side projects as a 
 
 ## 📬 Get in touch
 
-- Twitter: [twitter.com/danielson7\_](https://twitter.com/danielson7_)
+- X: [twitter.com/danielson7\_](https://twitter.com/danielson7_)
 - LinkedIn: [linkedin.com/in/danielrobertson4](https://www.linkedin.com/in/danielrobertson4/)
