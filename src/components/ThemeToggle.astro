@@ -1,69 +1,47 @@
-<button id="themeToggle" class="p-3">
-  <span class="sr-only">Toggle Dark Mode</span>
-  <svg
-    id="sunIcon"
-    class="hidden w-6 h-6 text-zinc-100 hover:text-zinc-300"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 20 20"
-  >
-    <path
-      stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M10 3V1m0 18v-2M5.05 5.05 3.636 3.636m12.728 12.728L14.95 14.95M3 10H1m18 0h-2M5.05 14.95l-1.414 1.414M16.364 3.636 14.95 5.05M14 10a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
-    ></path>
-  </svg>
-  <svg
-    id="moonIcon"
-    class="hidden w-6 h-6 text-zinc-900 hover:text-zinc-600"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 18 20"
-  >
-    <path
-      stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M8.509 5.75c0-1.493.394-2.96 1.144-4.25h-.081a8.5 8.5 0 1 0 7.356 12.746A8.5 8.5 0 0 1 8.509 5.75Z"
-    ></path>
-  </svg>
+<button
+  id="themeToggle"
+  class="p-2.5 rounded-lg hover:bg-zinc-200/80 dark:hover:bg-zinc-800/80 transition-[background-color,transform] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.96]"
+>
+  <span class="sr-only">Toggle theme</span>
+  <div class="relative w-5 h-5">
+    <svg
+      class="absolute inset-0 w-5 h-5 text-zinc-100 scale-[0.25] opacity-0 blur-[4px] dark:scale-100 dark:opacity-100 dark:blur-0 transition-[opacity,transform,filter] duration-300"
+      style="transition-timing-function: cubic-bezier(0.2, 0, 0, 1)"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.5"
+        d="M10 3V1m0 18v-2M5.05 5.05 3.636 3.636m12.728 12.728L14.95 14.95M3 10H1m18 0h-2M5.05 14.95l-1.414 1.414M16.364 3.636 14.95 5.05M14 10a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+      ></path>
+    </svg>
+    <svg
+      class="w-5 h-5 text-zinc-700 scale-100 opacity-100 blur-0 dark:scale-[0.25] dark:opacity-0 dark:blur-[4px] transition-[opacity,transform,filter] duration-300"
+      style="transition-timing-function: cubic-bezier(0.2, 0, 0, 1)"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 18 20"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.5"
+        d="M8.509 5.75c0-1.493.394-2.96 1.144-4.25h-.081a8.5 8.5 0 1 0 7.356 12.746A8.5 8.5 0 0 1 8.509 5.75Z"
+      ></path>
+    </svg>
+  </div>
 </button>
 
 <script is:inline>
-  // Function to update the theme and icon
-  function updateTheme(theme) {
-    const iconContainer = document.getElementById("iconContainer");
-    document.documentElement.classList.toggle("dark", theme === "dark");
-    document
-      .getElementById("sunIcon")
-      .classList.toggle("hidden", theme !== "dark");
-    document
-      .getElementById("moonIcon")
-      .classList.toggle("hidden", theme === "dark");
-    localStorage.setItem("theme", theme);
-  }
-
-  // Initial theme setup
-  document.addEventListener("DOMContentLoaded", () => {
-    let theme = localStorage.getItem("theme");
-    if (!theme) {
-      theme = window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
-    }
-    updateTheme(theme);
-  });
-
-  // Toggle button event listener
   document.getElementById("themeToggle").addEventListener("click", () => {
-    const newTheme = document.documentElement.classList.contains("dark")
-      ? "light"
-      : "dark";
-    updateTheme(newTheme);
+    const isDark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
   });
 </script>

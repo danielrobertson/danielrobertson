@@ -8,63 +8,79 @@ import Socials from "../components/Socials.astro";
 
 const name = "Daniel Robertson";
 const shortBio =
-  "I’m a software engineer and musician based in Austin, Texas.";
+  "I'm a software engineer and musician based in Austin, Texas.";
 ---
 
 <Layout>
   <header class="flex flex-row-reverse"><ThemeToggle /></header>
-  <main id="top" class="">
-    <section class="md:p-8">
+  <main id="top">
+    <section class="py-16 md:py-28 lg:py-36">
       <div
-        class="flex flex-col md:flex-row justify-around items-center gap-6 p-3"
+        class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12 lg:gap-20 px-4"
       >
         <div
-          class="md:hidden h-36 w-36 rounded-[50%] overflow-hidden flex justify-center items-center shadow-2xl"
+          class="stagger stagger-1 md:hidden h-36 w-36 rounded-full overflow-hidden flex justify-center items-center ring-1 ring-black/[0.06] dark:ring-white/[0.08] shadow-lg"
         >
-          <Image src={profileImage} alt={name} height={144} width={144} />
+          <Image
+            src={profileImage}
+            alt={name}
+            height={144}
+            width={144}
+            class="outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10"
+          />
         </div>
         <div>
-          <h1>
-            <span class="text-lg">Hey 👋 I'm</span>
+          <h1 class="stagger stagger-2">
             <span
-              class="block text-4xl md:text-5xl lg:text-6xl font-bold name-gradient"
+              class="block text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight"
               >{name}
             </span>
           </h1>
-          <p class="text-lg max-w-md pr-2">{shortBio}</p>
+          <p
+            class="stagger stagger-3 text-lg max-w-md text-zinc-600 dark:text-zinc-400"
+          >
+            {shortBio}
+          </p>
           <a
-            class="mt-3 text-base flex w-fit items-center hover:text-purple-600"
+            class="group stagger stagger-4 mt-6 inline-flex items-center gap-3 rounded-full bg-zinc-900 dark:bg-zinc-100 text-zinc-50 dark:text-zinc-900 pl-5 pr-1.5 py-1.5 text-sm font-medium transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-90 active:scale-[0.98]"
             href="/resume.pdf"
             target="_blank"
-            >View my resume <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="ml-2"
-              ><path
-                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-              ></path><polyline points="15 3 21 3 21 9"></polyline><line
-                x1="10"
-                y1="14"
-                x2="21"
-                y2="3"></line></svg
-            ></a
           >
-          <Socials />
+            View resume
+            <span
+              class="flex items-center justify-center w-7 h-7 rounded-full bg-white/10 dark:bg-black/10 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M7 17L17 7"></path>
+                <path d="M7 7h10v10"></path>
+              </svg>
+            </span>
+          </a>
+          <div class="stagger stagger-5">
+            <Socials />
+          </div>
         </div>
-        <Image
-          class="hidden md:block rounded-3xl shadow-2xl w-72 lg:w-96"
-          src={profileImage}
-          alt={name}
-          height={556}
-          width={417}
-        />
+        <div
+          class="stagger stagger-1 hidden md:block p-2 rounded-3xl bg-black/[0.03] dark:bg-white/[0.05] ring-1 ring-black/[0.05] dark:ring-white/[0.08] shadow-lg"
+        >
+          <Image
+            class="rounded-2xl w-72 lg:w-96 outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10"
+            src={profileImage}
+            alt={name}
+            height={556}
+            width={417}
+          />
+        </div>
       </div>
     </section>
   </main>

@@ -21,16 +21,19 @@ const name = "Daniel Robertson";
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{name} | Product Engineer and Musician</title>
+    <script is:inline>
+      const theme = localStorage.getItem("theme") ??
+        (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.classList.toggle("dark", theme === "dark");
+    </script>
   </head>
   <body
-    class="container mx-auto text-zinc-900 dark:text-zinc-100 bg-gray-100 dark:bg-zinc-900 antialiased"
+    class="container mx-auto text-zinc-900 dark:text-zinc-100 bg-zinc-50 dark:bg-zinc-900 antialiased"
   >
     <slot />
   </body>
 </html>
 <style is:global>
-  :root {
-  }
   html {
     font-family: "Outfit Variable", sans-serif;
   }
@@ -44,19 +47,38 @@ const name = "Daniel Robertson";
     box-sizing: border-box;
   }
 
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
   h1 {
     margin: 1rem 0;
   }
 
-  .name-gradient {
-    background: linear-gradient(
-      90deg,
-      #a24fca 2.16%,
-      #7ec4fb 63.82%,
-      #93aad7 100%
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  ::selection {
+    background-color: rgba(168, 85, 247, 0.25);
+  }
+
+  @keyframes enter {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+      filter: blur(4px);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .stagger {
+      animation: enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .stagger-1 { animation-delay: 0ms; }
+    .stagger-2 { animation-delay: 80ms; }
+    .stagger-3 { animation-delay: 160ms; }
+    .stagger-4 { animation-delay: 240ms; }
+    .stagger-5 { animation-delay: 320ms; }
   }
 </style>
