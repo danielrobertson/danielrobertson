@@ -1,6 +1,7 @@
 ---
 import "@fontsource-variable/outfit";
 import "@/styles/globals.css";
+import DotBackground from "@/components/DotBackground";
 
 const name = "Daniel Robertson";
 ---
@@ -29,8 +30,9 @@ const name = "Daniel Robertson";
     </script>
   </head>
   <body
-    class="max-w-2xl mx-auto text-zinc-900 dark:text-zinc-100 bg-zinc-50 dark:bg-zinc-900 antialiased"
+    class="relative max-w-2xl mx-auto text-zinc-900 dark:text-zinc-100 bg-zinc-50 dark:bg-zinc-900 antialiased"
   >
+    <DotBackground client:load />
     <slot />
   </body>
 </html>

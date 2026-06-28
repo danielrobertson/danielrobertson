@@ -1,7 +1,7 @@
 const history = [
   { company: "Cloudflare", title: "Senior UI Engineer", date: "2023" },
   { company: "Project44", title: "Design Systems UX Engineer", date: "2023" },
-  { company: "Dongguk University, Seoul, South Korea", title: "Korean Language Level 1", date: "2022" },
+  { company: "Dongguk University", title: "Korean Language Level 1", date: "2022", location: "Seoul, South Korea" },
   { company: "Leafly", title: "Senior Software Engineer", date: "2019" },
   { company: "IBM", title: "Software Engineer", date: "2015" },
   { company: "Blackbaud", title: "Software Engineer Intern", date: "2014" },
@@ -36,9 +36,14 @@ export default function CareerTimeline() {
                     <span className="block text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">
                       {entry.title}
                     </span>
+                    {"location" in entry && (
+                      <span className="block text-xs text-zinc-500 dark:text-zinc-400 mt-1 italic">
+                        {entry.location}
+                      </span>
+                    )}
                   </div>
                   <div className="pl-8">
-                    <span className="text-xs tabular-nums text-zinc-400 dark:text-zinc-500">
+                    <span className="text-xs tabular-nums text-zinc-500 dark:text-zinc-400">
                       {entry.date}
                     </span>
                   </div>
@@ -46,7 +51,7 @@ export default function CareerTimeline() {
               ) : (
                 <>
                   <div className="pr-8 text-right pt-px">
-                    <span className="text-xs tabular-nums text-zinc-400 dark:text-zinc-500">
+                    <span className="text-xs tabular-nums text-zinc-500 dark:text-zinc-400">
                       {entry.date}
                     </span>
                   </div>
@@ -57,6 +62,11 @@ export default function CareerTimeline() {
                     <span className="block text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">
                       {entry.title}
                     </span>
+                    {"location" in entry && (
+                      <span className="block text-xs text-zinc-500 dark:text-zinc-400 mt-1 italic">
+                        {entry.location}
+                      </span>
+                    )}
                   </div>
                 </>
               )}
