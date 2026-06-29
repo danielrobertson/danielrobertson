@@ -1,5 +1,5 @@
 const history = [
-  { company: "Cloudflare", title: "Senior UI Engineer", date: "2023" },
+  { company: "Cloudflare", title: "Senior UI Engineer", date: "2023", color: "#f28021" },
   { company: "Project44", title: "Design Systems UX Engineer", date: "2023" },
   { company: "Dongguk University", title: "Korean Language Level 1", date: "2022", location: "Seoul, South Korea" },
   { company: "Leafly", title: "Senior Software Engineer", date: "2019" },
@@ -25,7 +25,10 @@ export default function CareerTimeline() {
               className="timeline-entry relative grid grid-cols-[1fr_1fr] items-start py-5"
               style={{ animationDelay: delay }}
             >
-              <div className="absolute left-1/2 top-6 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+              <div
+                className="absolute left-1/2 top-6 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-600"
+                style={entry.color ? { backgroundColor: entry.color } : undefined}
+              />
 
               {isLeft ? (
                 <>
