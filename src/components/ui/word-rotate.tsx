@@ -25,27 +25,24 @@ export function WordRotate({
   }, [words, duration]);
 
   return (
-    <span className="relative inline-block">
-      <span className="invisible">{words[0]}</span>
-      <AnimatePresence mode="wait">
+    <span className="relative inline-flex overflow-hidden align-baseline rounded-md px-2 py-0.5 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] dark:shadow-[0px_2px_3px_-1px_rgba(255,255,255,0.1),0px_1px_0px_0px_rgba(255,255,255,0.02),0px_0px_0px_1px_rgba(255,255,255,0.08)]">
+      <AnimatePresence mode="popLayout">
         <motion.span
-          key={words[index]}
-          className={cn("absolute left-0 top-0 whitespace-nowrap", className)}
-          initial={{ opacity: 0, y: -8, filter: "blur(4px)" }}
+          key={index}
+          className={cn("inline-block whitespace-nowrap", className)}
+          initial={{ opacity: 0, y: -20, filter: "blur(10px)" }}
           animate={{
             opacity: 1,
             y: 0,
             filter: "blur(0px)",
-            x: [0, -2, 0],
+            x: [0, -2, 2, 0],
           }}
-          exit={{ opacity: 0, y: 8, filter: "blur(4px)" }}
+          exit={{ opacity: 0, y: 20, filter: "blur(10px)" }}
           transition={{
-            duration: 0.45,
-            ease: [0.4, 0, 0.7, 1],
+            duration: 0.5,
             x: {
-              delay: 0.25,
-              duration: 0.3,
-              ease: [0.22, 1, 0.36, 1],
+              duration: 0.4,
+              delay: 0.5,
             },
           }}
         >
