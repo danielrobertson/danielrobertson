@@ -12,7 +12,7 @@ interface WordRotateProps {
 
 export function WordRotate({
   words,
-  duration = 2000,
+  duration = 5000,
   className,
 }: WordRotateProps) {
   const [index, setIndex] = useState(0);
@@ -25,17 +25,28 @@ export function WordRotate({
   }, [words, duration]);
 
   return (
-    <span className="inline-flex overflow-hidden align-baseline">
+    <span className="relative inline-block">
+      <span className="invisible">{words[0]}</span>
       <AnimatePresence mode="wait">
         <motion.span
           key={words[index]}
-          className={cn(className)}
-          initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          exit={{ opacity: 0, y: -12, filter: "blur(6px)" }}
+          className={cn("absolute left-0 top-0 whitespace-nowrap", className)}
+          initial={{ opacity: 0, y: -8, filter: "blur(4px)" }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            x: [0, -2, 0],
+          }}
+          exit={{ opacity: 0, y: 8, filter: "blur(4px)" }}
           transition={{
-            duration: 0.5,
-            ease: [0.32, 0.72, 0, 1],
+            duration: 0.45,
+            ease: [0.4, 0, 0.7, 1],
+            x: {
+              delay: 0.25,
+              duration: 0.3,
+              ease: [0.22, 1, 0.36, 1],
+            },
           }}
         >
           {words[index]}
