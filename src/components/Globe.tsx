@@ -66,7 +66,7 @@ export default function Globe({ pins }: GlobeProps) {
     });
 
     const measure = () =>
-      Math.max(1, Math.min(container.clientWidth, container.clientHeight, 640));
+      Math.max(1, Math.min(container.clientWidth, container.clientHeight, 900));
 
     let size = measure();
     const applySize = () => {
