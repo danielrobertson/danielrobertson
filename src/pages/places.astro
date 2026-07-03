@@ -12,6 +12,15 @@ import paris1 from "../assets/paris1.jpg";
 import seattle1 from "../assets/seattle1.jpg";
 import seoul1 from "../assets/seoul1.jpg";
 import tokyo1 from "../assets/tokyo1.jpg";
+import amsterdam1 from "../assets/amsterdam1.jpg";
+import busan1 from "../assets/busan1.jpg";
+import dallas1 from "../assets/dallas1.jpg";
+import miami1 from "../assets/miami1.jpg";
+import montreal1 from "../assets/montreal1.jpg";
+import orlando1 from "../assets/orlando1.jpg";
+import san_antonio1 from "../assets/san_antonio1.jpg";
+import vancouver1 from "../assets/vancouver1.jpg";
+import zurich1 from "../assets/zurich1.jpg";
 
 const name = "Daniel Robertson";
 
@@ -22,8 +31,17 @@ const cities = [
   { id: "london", location: [51.5074, -0.1278], label: "London", img: london1, rotate: 6 },
   { id: "paris", location: [48.8566, 2.3522], label: "Paris", img: paris1, rotate: -4 },
   { id: "berlin", location: [52.52, 13.405], label: "Berlin", img: berlin1, rotate: 3 },
+  { id: "zurich", location: [47.3769, 8.5417], label: "Zurich", img: zurich1, rotate: -4 },
+  { id: "amsterdam", location: [52.3676, 4.9041], label: "Amsterdam", img: amsterdam1, rotate: 4 },
   { id: "seoul", location: [37.5665, 126.978], label: "Seoul", img: seoul1, rotate: -6 },
+  { id: "busan", location: [35.1796, 129.0756], label: "Busan", img: busan1, rotate: -4 },
   { id: "tokyo", location: [35.6762, 139.6503], label: "Tokyo", img: tokyo1, rotate: 5 },
+  { id: "vancouver", location: [49.2827, -123.1207], label: "Vancouver", img: vancouver1, rotate: -3 },
+  { id: "montreal", location: [45.5019, -73.5674], label: "Montreal", img: montreal1, rotate: 6 },
+  { id: "dallas", location: [32.7767, -96.797], label: "Dallas", img: dallas1, rotate: -5 },
+  { id: "san_antonio", location: [29.4241, -98.4936], label: "San Antonio", img: san_antonio1, rotate: 3 },
+  { id: "miami", location: [25.7617, -80.1918], label: "Miami", img: miami1, rotate: -4 },
+  { id: "orlando", location: [28.5383, -81.3792], label: "Orlando", img: orlando1, rotate: 5 },
 ] as const;
 
 const pins = await Promise.all(
@@ -45,7 +63,7 @@ const pins = await Promise.all(
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    <title>{name} | Travels</title>
+    <title>{name} | Places</title>
     <script is:inline>
       const theme = localStorage.getItem("theme") ??
         (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
@@ -70,7 +88,7 @@ const pins = await Promise.all(
           </li>
           <li>
             <span class="text-sm text-zinc-900 dark:text-zinc-100 py-2 -my-2 px-1 -mx-1">
-              travels
+              places
             </span>
           </li>
           <li>

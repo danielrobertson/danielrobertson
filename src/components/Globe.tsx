@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import createGlobe from "cobe";
 import { AnimatePresence, motion } from "motion/react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export interface Pin {
   id: string;
@@ -45,6 +46,8 @@ export default function Globe({ pins }: GlobeProps) {
   const pointerInteracting = useRef<number | null>(null);
   const pointerMovement = useRef(0);
   const [selectedPin, setSelectedPin] = useState<Pin | null>(null);
+  const pausedRef = useRef(false);
+  pausedRef.current = selectedPin !== null;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -94,7 +97,8 @@ export default function Globe({ pins }: GlobeProps) {
     // cobe v2 only renders when update() is called, so drive it with rAF.
     let raf = 0;
     const frame = () => {
-      if (pointerInteracting.current === null) phi += 0.003;
+      if (pointerInteracting.current === null && !pausedRef.current)
+        phi += 0.0015;
       globe.update({
         phi: phi + pointerMovement.current,
         theta: 0.2,
@@ -123,13 +127,26 @@ export default function Globe({ pins }: GlobeProps) {
     };
   }, [pins]);
 
+  const navigate = useCallback(
+    (dir: 1 | -1) => {
+      setSelectedPin((current) => {
+        if (!current) return current;
+        const i = pins.findIndex((p) => p.id === current.id);
+        return pins[(i + dir + pins.length) % pins.length];
+      });
+    },
+    [pins]
+  );
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setSelectedPin(null);
+      if (e.key === "ArrowRight") navigate(1);
+      if (e.key === "ArrowLeft") navigate(-1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [navigate]);
 
   const onPointerDown = useCallback((e: React.PointerEvent) => {
     pointerInteracting.current = e.clientX;
@@ -221,27 +238,25 @@ export default function Globe({ pins }: GlobeProps) {
           }}
         />
 
-        <div className="absolute inset-0 pointer-events-none">
-          {pins.map((pin) => (
-            <button
-              key={pin.id}
-              className="travel-polaroid"
-              style={
-                {
-                  positionAnchor: `--cobe-${pin.id}`,
-                  opacity: `var(--cobe-visible-${pin.id}, 0)`,
-                  filter: `blur(calc((1 - var(--cobe-visible-${pin.id}, 0)) * 8px))`,
-                  "--polaroid-rotate": `${pin.rotate}deg`,
-                } as React.CSSProperties
-              }
-              onClick={() => setSelectedPin(pin)}
-              aria-label={`View photo of ${pin.label}`}
-            >
-              <img src={pin.image} alt={pin.label} loading="lazy" />
-              <span className="travel-polaroid-caption">{pin.label}</span>
-            </button>
-          ))}
-        </div>
+        {pins.map((pin) => (
+          <button
+            key={pin.id}
+            className="travel-polaroid"
+            style={
+              {
+                positionAnchor: `--cobe-${pin.id}`,
+                opacity: `var(--cobe-visible-${pin.id}, 0)`,
+                filter: `blur(calc((1 - var(--cobe-visible-${pin.id}, 0)) * 8px))`,
+                "--polaroid-rotate": `${pin.rotate}deg`,
+              } as React.CSSProperties
+            }
+            onClick={() => setSelectedPin(pin)}
+            aria-label={`View photo of ${pin.label}`}
+          >
+            <img src={pin.image} alt={pin.label} loading="lazy" />
+            <span className="travel-polaroid-caption">{pin.label}</span>
+          </button>
+        ))}
       </div>
 
       <AnimatePresence>
@@ -254,6 +269,17 @@ export default function Globe({ pins }: GlobeProps) {
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
             onClick={() => setSelectedPin(null)}
           >
+            <button
+              className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 p-2 rounded-full text-white/80 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate(-1);
+              }}
+              aria-label="Previous photo"
+            >
+              <ChevronLeft className="size-6" />
+            </button>
+
             <motion.div
               initial={{ opacity: 0, scale: 0.85, y: 20, rotate: -3 }}
               animate={{ opacity: 1, scale: 1, y: 0, rotate: 2 }}
@@ -262,15 +288,30 @@ export default function Globe({ pins }: GlobeProps) {
               className="relative bg-white p-3 pb-14 shadow-2xl cursor-default"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
+              <motion.img
+                key={selectedPin.id}
                 src={selectedPin.image}
                 alt={selectedPin.label}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.25 }}
                 className="w-64 sm:w-72 h-auto object-cover"
               />
               <p className="absolute bottom-4 left-0 right-0 text-center text-zinc-600 text-sm font-medium tracking-wide">
                 {selectedPin.label}
               </p>
             </motion.div>
+
+            <button
+              className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 p-2 rounded-full text-white/80 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate(1);
+              }}
+              aria-label="Next photo"
+            >
+              <ChevronRight className="size-6" />
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
