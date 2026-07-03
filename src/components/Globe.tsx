@@ -15,6 +15,11 @@ interface GlobeProps {
   pins: Pin[];
 }
 
+// Radians of rotation per pixel dragged.
+const DRAG_SENSITIVITY = 0.005;
+// After a mouse/touch grab, hold position this long before auto-spinning again.
+const INTERACTION_COOLDOWN_MS = 3000;
+
 // Matches the cobe docs "Polaroids" showcase preset; dark variant follows
 // the classic cobe dark example, tuned for the zinc-900 page background.
 const THEMES = {
@@ -45,6 +50,7 @@ export default function Globe({ pins }: GlobeProps) {
   const isDarkRef = useRef(true);
   const pointerInteracting = useRef<number | null>(null);
   const pointerMovement = useRef(0);
+  const lastInteraction = useRef(0);
   const [selectedPin, setSelectedPin] = useState<Pin | null>(null);
   const pausedRef = useRef(false);
   pausedRef.current = selectedPin !== null;
@@ -95,10 +101,19 @@ export default function Globe({ pins }: GlobeProps) {
     });
 
     // cobe v2 only renders when update() is called, so drive it with rAF.
+    // Advance rotation by elapsed time (rad/sec) rather than per-frame, so the
+    // spin speed stays constant across refresh rates / browsers. Safari throttles
+    // rAF on heavy WebGL more than Chrome, which made a per-frame step spin slower.
+    const ROTATION_SPEED = 0.09; // rad/sec (≈ 0.0015/frame at 60fps)
     let raf = 0;
-    const frame = () => {
-      if (pointerInteracting.current === null && !pausedRef.current)
-        phi += 0.0015;
+    let lastTime = performance.now();
+    const frame = (now: number) => {
+      // Clamp delta so returning from a background tab doesn't jump.
+      const delta = Math.min(now - lastTime, 100) / 1000;
+      lastTime = now;
+      const coolingDown = now - lastInteraction.current < INTERACTION_COOLDOWN_MS;
+      if (pointerInteracting.current === null && !pausedRef.current && !coolingDown)
+        phi += ROTATION_SPEED * delta;
       globe.update({
         phi: phi + pointerMovement.current,
         theta: 0.2,
@@ -149,19 +164,26 @@ export default function Globe({ pins }: GlobeProps) {
   }, [navigate]);
 
   const onPointerDown = useCallback((e: React.PointerEvent) => {
-    pointerInteracting.current = e.clientX;
+    // Seed the baseline so the accumulated drag offset is preserved: grabbing
+    // again continues from the current position instead of snapping back.
+    pointerInteracting.current =
+      e.clientX - pointerMovement.current / DRAG_SENSITIVITY;
+    lastInteraction.current = performance.now();
+    e.currentTarget.setPointerCapture(e.pointerId);
     if (canvasRef.current) canvasRef.current.style.cursor = "grabbing";
   }, []);
 
   const onPointerUp = useCallback(() => {
     pointerInteracting.current = null;
+    lastInteraction.current = performance.now();
     if (canvasRef.current) canvasRef.current.style.cursor = "grab";
   }, []);
 
   const onPointerMove = useCallback((e: React.PointerEvent) => {
     if (pointerInteracting.current !== null) {
       const delta = e.clientX - pointerInteracting.current;
-      pointerMovement.current = delta * 0.005;
+      pointerMovement.current = delta * DRAG_SENSITIVITY;
+      lastInteraction.current = performance.now();
     }
   }, []);
 
@@ -229,12 +251,13 @@ export default function Globe({ pins }: GlobeProps) {
           ref={canvasRef}
           onPointerDown={onPointerDown}
           onPointerUp={onPointerUp}
-          onPointerOut={onPointerUp}
+          onPointerCancel={onPointerUp}
           onPointerMove={onPointerMove}
           style={{
             cursor: "grab",
             opacity: 0,
             transition: "opacity 0.5s ease",
+            touchAction: "none",
           }}
         />
 
