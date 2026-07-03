@@ -1,12 +1,12 @@
 const history = [
   { company: "Cloudflare", title: "Senior UI Engineer", date: "2023", color: "#f28021" },
   { company: "Project44", title: "Design Systems UX Engineer", date: "2023" },
-  { company: "Dongguk University", title: "Korean Language Level 1", date: "2022", location: "Seoul, South Korea" },
+  { company: "Dongguk University", title: "Korean Level 1", date: "2022", location: "Seoul, South Korea" },
   { company: "Leafly", title: "Senior Software Engineer", date: "2019" },
   { company: "IBM", title: "Software Engineer", date: "2015" },
   { company: "Blackbaud", title: "Software Engineer Intern", date: "2014" },
   { company: "uShip", title: "Software Engineer Intern", date: "2013" },
-  { company: "University of Texas at Austin", title: "Bachelor of Science, Computer Science", date: "2010" },
+  { company: "University of Texas at Austin", title: "Bachelor of Science, Computer Science", date: "2010-2015" },
 ]
 
 export default function CareerTimeline() {
