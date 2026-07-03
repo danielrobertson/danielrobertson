@@ -18,7 +18,7 @@ interface GlobeProps {
 // Radians of rotation per pixel dragged.
 const DRAG_SENSITIVITY = 0.005;
 // After a mouse/touch grab, hold position this long before auto-spinning again.
-const INTERACTION_COOLDOWN_MS = 3000;
+const INTERACTION_COOLDOWN_MS = 1500;
 
 // Matches the cobe docs "Polaroids" showcase preset; dark variant follows
 // the classic cobe dark example, tuned for the zinc-900 page background.
@@ -50,7 +50,9 @@ export default function Globe({ pins }: GlobeProps) {
   const isDarkRef = useRef(true);
   const pointerInteracting = useRef<number | null>(null);
   const pointerMovement = useRef(0);
-  const lastInteraction = useRef(0);
+  // -Infinity so the cooldown never applies on load; the globe auto-spins until
+  // the first real grab sets a timestamp.
+  const lastInteraction = useRef(-Infinity);
   const [selectedPin, setSelectedPin] = useState<Pin | null>(null);
   const pausedRef = useRef(false);
   pausedRef.current = selectedPin !== null;
