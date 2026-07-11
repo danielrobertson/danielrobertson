@@ -22,6 +22,13 @@
   "menuColor": "default",
   "menuAccent": "subtle",
   "registries": {
-    "@reui": "https://reui.io/r/{style}/{name}.json"
+    "@reui": "https://reui.io/r/{style}/{name}.json",
+    "@aceternity": {
+      "url": "https://ui.aceternity.com/registry/{name}.json",
+      "headers": {
+        "Authorization": "Bearer ${ACETERNITY_API_KEY}"
+      }
+    }
   }
 }
+
