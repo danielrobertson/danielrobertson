@@ -4,16 +4,23 @@ import "@/styles/globals.css";
 import DotBackground from "@/components/DotBackground";
 
 const name = "Daniel Robertson";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${name} | Product Engineer and Musician`,
+  description = "Daniel Robertson, product software engineer and musician from Austin, Texas",
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Daniel Robertson, product software engineer and musician from Austin, Texas"
-    />
+    <meta name="description" content={description} />
     <meta
       name="keywords"
       content="software engineer, web developer, javascript, musician, Daniel Robertson"
@@ -22,7 +29,7 @@ const name = "Daniel Robertson";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    <title>{name} | Product Engineer and Musician</title>
+    <title>{title}</title>
     <script is:inline>
       const theme = localStorage.getItem("theme") ??
         (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");

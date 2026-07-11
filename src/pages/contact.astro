@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ThemeToggle from "../components/ThemeToggle";
+import ContactForm from "../components/ContactForm";
+
+const name = "Daniel Robertson";
+---
+
+<Layout title={`${name} | Contact`} description="Get in touch with Daniel Robertson">
+  <header class="stagger stagger-1 flex items-center justify-between pt-10 pb-4">
+    <nav>
+      <ul class="flex items-center gap-5">
+        <li>
+          <a
+            href="/"
+            class="nav-link text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 py-2 -my-2 px-1 -mx-1"
+          >
+            home
+          </a>
+        </li>
+        <li>
+          <a
+            href="/places"
+            class="nav-link text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 py-2 -my-2 px-1 -mx-1"
+          >
+            places
+          </a>
+        </li>
+        <li>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-link text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 py-2 -my-2 px-1 -mx-1"
+          >
+            resume
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <ThemeToggle client:load />
+  </header>
+
+  <main id="top">
+    <section class="stagger stagger-2 pt-8 md:pt-16 pb-24">
+      <ContactForm client:load />
+    </section>
+  </main>
+</Layout>
