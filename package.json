@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && tsc -p worker && astro build",
+    "cf-typegen": "wrangler types worker/worker-configuration.d.ts",
     "preview": "astro build && wrangler dev",
     "deploy": "astro build && wrangler deploy",
     "astro": "astro"

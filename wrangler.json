@@ -1,7 +1,29 @@
 {
   "name": "danielrobertson",
   "compatibility_date": "2026-06-27",
+  "main": "worker/index.ts",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "allowed_destination_addresses": ["danielrobertson733@gmail.com"]
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "CONTACT_RATE_LIMITER",
+      "namespace_id": "1001",
+      "simple": {
+        "limit": 3,
+        "period": 60
+      }
+    }
+  ],
+  "vars": {
+    "CONTACT_TO_ADDRESS": "danielrobertson733@gmail.com",
+    "CONTACT_FROM_ADDRESS": "contact@danielrobertson.me"
   }
 }
