@@ -6,13 +6,17 @@ const history = [
   { company: "IBM", title: "Software Engineer", date: "2015" },
   { company: "Blackbaud", title: "Software Engineer Intern", date: "2014" },
   { company: "uShip", title: "Software Engineer Intern", date: "2013" },
-  { company: "University of Texas at Austin", title: "Bachelor of Science, Computer Science", date: "2010-2015" },
+  { company: "University of Texas at Austin", title: "Bachelor of Science, Computer Science", date: "2010–2015" },
 ]
 
 export default function CareerTimeline() {
   return (
     <div className="relative">
-      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-zinc-200/70 dark:bg-zinc-800 -translate-x-1/2" />
+      <h2 className="sr-only">Career timeline</h2>
+      <div
+        aria-hidden="true"
+        className="absolute left-1/2 top-0 bottom-0 w-px bg-zinc-200/70 dark:bg-zinc-800 -translate-x-1/2"
+      />
 
       <div className="flex flex-col">
         {history.map((entry, i) => {
@@ -45,7 +49,7 @@ export default function CareerTimeline() {
                       </span>
                     )}
                   </div>
-                  <div className="pl-8">
+                  <div className="pl-8 pt-px">
                     <span className="text-xs tabular-nums text-zinc-500 dark:text-zinc-400">
                       {entry.date}
                     </span>

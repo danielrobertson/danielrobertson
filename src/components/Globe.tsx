@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import createGlobe from "cobe";
-import { AnimatePresence, motion } from "motion/react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 export interface Pin {
   id: string;
@@ -107,6 +107,7 @@ export default function Globe({ pins }: GlobeProps) {
     // spin speed stays constant across refresh rates / browsers. Safari throttles
     // rAF on heavy WebGL more than Chrome, which made a per-frame step spin slower.
     const ROTATION_SPEED = 0.09; // rad/sec (≈ 0.0015/frame at 60fps)
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let raf = 0;
     let lastTime = performance.now();
     const frame = (now: number) => {
@@ -114,7 +115,12 @@ export default function Globe({ pins }: GlobeProps) {
       const delta = Math.min(now - lastTime, 100) / 1000;
       lastTime = now;
       const coolingDown = now - lastInteraction.current < INTERACTION_COOLDOWN_MS;
-      if (pointerInteracting.current === null && !pausedRef.current && !coolingDown)
+      if (
+        pointerInteracting.current === null &&
+        !pausedRef.current &&
+        !coolingDown &&
+        !reducedMotion.matches
+      )
         phi += ROTATION_SPEED * delta;
       globe.update({
         phi: phi + pointerMovement.current,
@@ -251,6 +257,8 @@ export default function Globe({ pins }: GlobeProps) {
       <div ref={wrapperRef} className="relative">
         <canvas
           ref={canvasRef}
+          role="img"
+          aria-label="Interactive globe with pins on cities I've visited. Drag to rotate."
           onPointerDown={onPointerDown}
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
@@ -284,6 +292,7 @@ export default function Globe({ pins }: GlobeProps) {
         ))}
       </div>
 
+      <MotionConfig reducedMotion="user">
       <AnimatePresence>
         {selectedPin && (
           <motion.div
@@ -291,9 +300,23 @@ export default function Globe({ pins }: GlobeProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Photo of ${selectedPin.label}`}
+            className="fixed inset-0 z-50 flex items-center justify-center overscroll-contain bg-black/60 backdrop-blur-sm"
             onClick={() => setSelectedPin(null)}
           >
+            <button
+              className="absolute right-4 top-4 p-2 rounded-full text-white/80 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedPin(null);
+              }}
+              aria-label="Close photo"
+            >
+              <X className="size-5" />
+            </button>
+
             <button
               className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 p-2 rounded-full text-white/80 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-colors"
               onClick={(e) => {
@@ -340,6 +363,7 @@ export default function Globe({ pins }: GlobeProps) {
           </motion.div>
         )}
       </AnimatePresence>
+      </MotionConfig>
     </div>
   );
 }

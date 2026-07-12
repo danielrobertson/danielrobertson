@@ -2,6 +2,7 @@
 import "@fontsource-variable/outfit";
 import "@/styles/globals.css";
 import { getImage } from "astro:assets";
+import Nav from "../components/Nav.astro";
 import ThemeToggle from "../components/ThemeToggle";
 import Globe from "../components/Globe";
 import berlin1 from "../assets/berlin1.jpg";
@@ -60,97 +61,39 @@ const pins = await Promise.all(
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Places I've traveled" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content={name} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#fafafa" />
     <title>{name} | Places</title>
     <script is:inline>
       const theme = localStorage.getItem("theme") ??
         (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
       document.documentElement.classList.toggle("dark", theme === "dark");
+      document
+        .querySelector('meta[name="theme-color"]')
+        ?.setAttribute("content", theme === "dark" ? "#18181b" : "#fafafa");
     </script>
   </head>
   <body
-    class="h-screen flex flex-col overflow-hidden text-zinc-900 dark:text-zinc-100 bg-zinc-50 dark:bg-zinc-900 antialiased"
+    class="h-dvh flex flex-col overflow-hidden text-zinc-900 dark:text-zinc-100 bg-zinc-50 dark:bg-zinc-900 antialiased"
   >
+    <a
+      href="#top"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm dark:focus:bg-zinc-800"
+    >
+      Skip to content
+    </a>
     <header
       class="stagger stagger-1 flex items-center justify-between px-4 sm:px-6 pt-6 pb-2 max-w-2xl w-full mx-auto"
     >
-      <nav>
-        <ul class="flex items-center gap-5">
-          <li>
-            <a
-              href="/"
-              class="nav-link text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 py-2 -my-2 px-1 -mx-1"
-            >
-              home
-            </a>
-          </li>
-          <li>
-            <span class="text-sm text-zinc-900 dark:text-zinc-100 py-2 -my-2 px-1 -mx-1">
-              places
-            </span>
-          </li>
-          <li>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="nav-link text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 py-2 -my-2 px-1 -mx-1"
-            >
-              resume
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <Nav current="places" />
       <ThemeToggle client:load />
     </header>
 
-    <main class="stagger stagger-2 flex-1 min-h-0">
+    <main id="top" class="stagger stagger-2 flex-1 min-h-0">
       <Globe client:load pins={pins} />
     </main>
   </body>
 </html>
-
-<style is:global>
-  html {
-    font-family: "Outfit Variable", sans-serif;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  ::selection {
-    background-color: rgba(168, 85, 247, 0.25);
-  }
-
-  .nav-link {
-    transition: color 0.3s cubic-bezier(0.32, 0.72, 0, 1);
-  }
-
-  .theme-toggle {
-    transition: background-color 0.3s cubic-bezier(0.32, 0.72, 0, 1),
-      scale 0.3s cubic-bezier(0.32, 0.72, 0, 1);
-  }
-
-  @keyframes enter {
-    from {
-      opacity: 0;
-      transform: translateY(16px);
-      filter: blur(4px);
-    }
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .stagger {
-      animation: enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-    }
-    .stagger-1 {
-      animation-delay: 0ms;
-    }
-    .stagger-2 {
-      animation-delay: 80ms;
-    }
-  }
-</style>

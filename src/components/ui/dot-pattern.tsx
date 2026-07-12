@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useId, useRef, useState } from "react"
-import { motion } from "motion/react"
+import { motion, useReducedMotion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -33,6 +33,8 @@ export function DotPattern({
   const id = useId()
   const containerRef = useRef<SVGSVGElement>(null)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  const reduceMotion = useReducedMotion()
+  const animateGlow = glow && !reduceMotion
 
   useEffect(() => {
     const updateDimensions = () => {
@@ -88,9 +90,9 @@ export function DotPattern({
           cy={dot.y}
           r={cr}
           fill={glow ? `url(#${id}-gradient)` : "currentColor"}
-          initial={glow ? { opacity: 0.4, scale: 1 } : {}}
+          initial={animateGlow ? { opacity: 0.4, scale: 1 } : {}}
           animate={
-            glow
+            animateGlow
               ? {
                   opacity: [0.4, 1, 0.4],
                   scale: [1, 1.5, 1],
@@ -98,7 +100,7 @@ export function DotPattern({
               : {}
           }
           transition={
-            glow
+            animateGlow
               ? {
                   duration: dot.duration,
                   repeat: Infinity,

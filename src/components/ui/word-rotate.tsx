@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface WordRotateProps {
@@ -16,6 +16,7 @@ export function WordRotate({
   className,
 }: WordRotateProps) {
   const [index, setIndex] = useState(0);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -30,14 +31,17 @@ export function WordRotate({
         <motion.span
           key={index}
           className={cn("inline-block whitespace-nowrap", className)}
-          initial={{ opacity: 0, y: -20, filter: "blur(10px)" }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            filter: "blur(0px)",
-            x: [0, -2, 2, 0],
-          }}
-          exit={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+          initial={
+            reduceMotion ? { opacity: 0 } : { opacity: 0, y: -20, filter: "blur(10px)" }
+          }
+          animate={
+            reduceMotion
+              ? { opacity: 1 }
+              : { opacity: 1, y: 0, filter: "blur(0px)", x: [0, -2, 2, 0] }
+          }
+          exit={
+            reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20, filter: "blur(10px)" }
+          }
           transition={{
             duration: 0.5,
             x: {

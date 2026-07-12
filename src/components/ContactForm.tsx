@@ -113,12 +113,12 @@ export default function ContactForm() {
           Get in touch
         </h1>
         <p className="mt-4 text-sm text-zinc-500 dark:text-zinc-400 max-w-sm">
-          Reach out and I'll get back to you as soon as I can.
+          Reach out and I’ll get back to you as soon as I can.
         </p>
       </div>
 
       {status === "success" ? (
-        <div className="py-10">
+        <div className="py-10" role="status">
           <p className="rounded-md bg-zinc-100 dark:bg-zinc-900 px-4 py-6 text-center text-sm text-zinc-700 dark:text-zinc-300">
             Thanks for reaching out — your message has been sent.
           </p>
@@ -130,7 +130,7 @@ export default function ContactForm() {
               htmlFor="name"
               className="block text-sm font-medium leading-6 text-zinc-700 dark:text-zinc-400"
             >
-              Full Name
+              Name
             </label>
             <div className="mt-2">
               <input
@@ -138,9 +138,10 @@ export default function ContactForm() {
                 name="name"
                 type="text"
                 required
+                autoComplete="name"
                 maxLength={200}
                 placeholder="Jane Doe"
-                className="block w-full rounded-md bg-white dark:bg-zinc-900 px-4 py-1.5 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 ring-1 ring-inset ring-zinc-300 dark:ring-zinc-700 focus:ring-2 focus:ring-zinc-500 focus:outline-none"
+                className="block w-full rounded-md bg-white dark:bg-zinc-900 px-4 py-2 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 ring-1 ring-inset ring-zinc-300 dark:ring-zinc-700 focus:ring-2 focus:ring-zinc-500 focus:outline-none"
               />
             </div>
           </div>
@@ -150,7 +151,7 @@ export default function ContactForm() {
               htmlFor="email"
               className="block text-sm font-medium leading-6 text-zinc-700 dark:text-zinc-400"
             >
-              Email address
+              Email
             </label>
             <div className="mt-2">
               <input
@@ -158,9 +159,11 @@ export default function ContactForm() {
                 name="email"
                 type="email"
                 required
+                autoComplete="email"
+                spellCheck={false}
                 maxLength={320}
                 placeholder="hello@example.com"
-                className="block w-full rounded-md bg-white dark:bg-zinc-900 px-4 py-1.5 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 ring-1 ring-inset ring-zinc-300 dark:ring-zinc-700 focus:ring-2 focus:ring-zinc-500 focus:outline-none"
+                className="block w-full rounded-md bg-white dark:bg-zinc-900 px-4 py-2 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 ring-1 ring-inset ring-zinc-300 dark:ring-zinc-700 focus:ring-2 focus:ring-zinc-500 focus:outline-none"
               />
             </div>
           </div>
@@ -179,8 +182,8 @@ export default function ContactForm() {
                 rows={5}
                 required
                 maxLength={5000}
-                placeholder="Enter your message here"
-                className="block w-full rounded-md bg-white dark:bg-zinc-900 px-4 py-1.5 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 ring-1 ring-inset ring-zinc-300 dark:ring-zinc-700 focus:ring-2 focus:ring-zinc-500 focus:outline-none"
+                placeholder="Hi Daniel, I wanted to reach out about…"
+                className="block w-full rounded-md bg-white dark:bg-zinc-900 px-4 py-2 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 ring-1 ring-inset ring-zinc-300 dark:ring-zinc-700 focus:ring-2 focus:ring-zinc-500 focus:outline-none"
               />
             </div>
           </div>
@@ -205,7 +208,7 @@ export default function ContactForm() {
               disabled={status === "submitting"}
               className="w-full rounded-full bg-zinc-900 dark:bg-zinc-100 px-4 py-2 flex items-center justify-center text-sm font-medium text-white dark:text-zinc-900 transition hover:bg-zinc-800 dark:hover:bg-zinc-200 active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none"
             >
-              {status === "submitting" ? "Sending…" : "Submit"}
+              {status === "submitting" ? "Sending…" : "Send Message"}
             </button>
           </div>
         </form>
